@@ -39,18 +39,4 @@ public class Item{
     public Boolean getItemStatus(){
         return this.canBeGrabbed;
     }
-    
-    /**
-     * Main method that creates all the items
-     */
-    public static void main (String[] args){
-        Item bed = new Item("bed", "This is a bed.", false);
-        Item teddyBear = new Item("teddyBear", "This looks like a toy. It feels soft.", true);
-        Item firstSoul = new Item("firstSoul", "This is the first piece of my soul.", true);
-        Item box = new Item("box", "This is a box. Seems like there is something inside.", false);
-        Item leg = new Item("leg", "This looks like my leg. I'd better put it on to walk.", true);
-        Item irisPot = new Item("irisPot", "This is a plantpot. Seems like there is something inside.", false);
-        Item eye = new Item("eye", "This looks like my eye. I'd better put it on for better vision.", true);
-        Item secondSoul = new Item("secondSoul","This is the second piece of my soul.", true);
-    }
 }
