@@ -1,3 +1,7 @@
+/**
+ * The Item class creates items we will use in the rooms.
+ * Each item has a name, description and a status of whether can be grabbed.
+ */
 public class Item{
 
     //Attributes
@@ -29,6 +33,14 @@ public class Item{
     }
 
     /**
+     * Accessor for item's status(whether it can be grabbed)
+     * @return the status(whether it can be grabbed) of the item
+     */
+    public Boolean getItemStatus(){
+        return this.canBeGrabbed;
+    }
+    
+    /**
      * Main method that creates all the items
      */
     public static void main (String[] args){
@@ -39,7 +51,6 @@ public class Item{
         Item leg = new Item("leg", "This looks like my leg. I'd better put it on to walk.", true);
         Item irisPot = new Item("irisPot", "This is a plantpot. Seems like there is something inside.", false);
         Item eye = new Item("eye", "This looks like my eye. I'd better put it on for better vision.", true);
-        Item computer = new Item("computer", "This is a computer. I want to check what's on it.", false);
         Item secondSoul = new Item("secondSoul","This is the second piece of my soul.", true);
     }
 }
