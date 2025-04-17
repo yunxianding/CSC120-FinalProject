@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Room class is a parent class of Bedroom and Lab.
+ * The Room class represents a typical room that has a name, decription
+ * and a list of items.
+ * We currently have two rooms in our game: a bedroom and a lab.
  */
 public class Room {
     
@@ -16,7 +18,9 @@ public class Room {
         if (name != null){
             this.name = name;
         }
-        this.description = description;
+        if (description != null){
+            this.description = description;
+        }
         this.items = new ArrayList<>();
     }
 
@@ -35,7 +39,7 @@ public class Room {
     public String getDescription(){
         return this.description;
     }
-    
+
     /**
      * Add an item to the items arraylist
      */
