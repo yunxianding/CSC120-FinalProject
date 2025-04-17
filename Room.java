@@ -1,47 +1,63 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * The Room class is an abstract base class that provides a template
- * for all room types in the adventure game. Each room should implement
- * its own ways to describe itself and to process player commands.
+ * The Room class is a parent class of Bedroom and Lab.
  */
-public abstract class Room {
+public class Room {
     
-    // A basic description of the room
-    public String description;
+    // Attributes
+    protected String name = "<Name Unknown>";
+    protected String description = "<Description Unknown>";
+    protected List<Item> items;
 
-    public Room() {
-        description = "An undefined space.";
-    }
-
-    /**
-     * Returns the description of the room.
-     * 
-     * @return A String describing the room.
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Allows setting a description for the room.
-     * 
-     * @param description The description string to set.
-     */
-    public void setDescription(String description) {
+    /* Default Constructor */
+    public Room(String name, String description){
+        if (name != null){
+            this.name = name;
+        }
         this.description = description;
+        this.items = new ArrayList<>();
     }
 
     /**
-     * This method should print out the description and visible items
-     * or aspects of the room based on the game state.
+     * Accessor for the name of the room
+     * @return name of the room
      */
-    public abstract void describe();
+    public String getName() {
+        return this.name;
+    }
 
     /**
-     * Handles a command input by the player, such as "look" or "take toolbox".
-     * Each subclass must implement command processing relevant to that room.
-     *
-     * @param cmd The command input by the player.
+     * Accessor for the description of the room
+     * @return description of the room
      */
-    public abstract void handleCommand(String cmd);
+    public String getDescription(){
+        return this.description;
+    }
+    
+    /**
+     * Add an item to the items arraylist
+     */
+    public void addItem(Item item) {
+        if (item != null) {
+            items.add(item);
+        }
+    }
 
+    /**
+     * Remove an item from the items arraylist
+     */
+    public void removeItem(Item item) {
+        if (item != null) {
+            items.remove(item);
+        }
+    }
+
+    /**
+     * Accessor for the items arraylist
+     */
+    public List<Item> getItems() {
+        return items;
+    }
 }
