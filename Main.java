@@ -16,7 +16,7 @@ public class Main {
 
 
         //Create the Bedroom
-        Room bedroom = new Room("Bedroom", "This is a bedroom.");
+        Room bedroom = new Room("Bedroom", "This is a bedroom.", false);
         bedroom.addItem(bed);
         bedroom.addItem(teddyBear);
         bedroom.addItem(firstSoul);
@@ -26,10 +26,8 @@ public class Main {
         bedroom.addItem(irisPot);
 
         //Create the Lab
-        Room lab = new Room("Lab", "This is a lab.");
+        Room lab = new Room("Lab", "This is a lab.", true);
         lab.addItem(secondSoul); 
         //Remember to add the computer after Computer.java is finished
-        //I don't know how to add the laser yet but we will figure it out
-
     }
 }
