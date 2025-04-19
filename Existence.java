@@ -48,7 +48,14 @@ public class Existence {
      */
     public void die() {
         this.health = 0;
-        this.isAlive = false;
+        this.isAlive = false; // need to make some loop to restart the game? // Maybe add Scanner to ask user to keep playing or not?
+
+    }
+
+    public void respawn() {
+        this.health = 100;
+        this.isAlive = true;
+        System.out.println("I am reborn!");
     }
 
     // Game Functions
