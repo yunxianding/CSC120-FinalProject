@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Existence {
 
@@ -18,6 +19,7 @@ public class Existence {
         this.isAlive = true;
         this.health = 100; // User starts the game with full health.
         this.inventory = new ArrayList<Item>();
+
     }
 
     // Methods
@@ -36,6 +38,14 @@ public class Existence {
     }
 
     /**
+     * Get user's isAlive value (true/false)
+     */
+    public Boolean getIsAlive() {
+        return this.isAlive;
+    }
+    
+
+    /**
      * Decreases health (while fighting)
      */
     public void weaken() {
@@ -48,14 +58,47 @@ public class Existence {
      */
     public void die() {
         this.health = 0;
-        this.isAlive = false; // need to make some loop to restart the game? // Maybe add Scanner to ask user to keep playing or not?
-
+        this.isAlive = false; 
+        System.out.println(this.getHealth());
+        respawnChat();
     }
 
+    /**
+     * Become alive again
+     */
     public void respawn() {
-        this.health = 100;
-        this.isAlive = true;
-        System.out.println("I am reborn!");
+        this.getIsAlive();
+        if(this.isAlive == false) { // Check that user is actually dead
+            this.health = 100;
+            this.isAlive = true;
+            System.out.println("I am reborn!");
+        }
+        else {
+            throw new RuntimeException("You are still alive! ");
+        }
+    }
+
+/**
+   * Starts and runs the conversation with the user
+   * Asks the user how many rounds they want to chat for
+   */
+  public void respawnChat() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Do you want to die or respawn to play again? Press Y to respawn and N to die.");
+
+    String choice = scanner.nextLine();
+    if (choice.equals("Y")) {
+        this.getIsAlive();
+        this.respawn();
+        System.out.println("You're alive again - Hooray!");
+    }
+    else if (choice.equals("N")) {
+        System.out.println("Okay, you're dead. Bye!");
+    }
+    else {
+        System.out.println("I don't understand what you wrote. Try only Y or N.");
+    }
+    scanner.close();
     }
 
     // Game Functions

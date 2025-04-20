@@ -1,15 +1,5 @@
-import java.util.Scanner;
 
-/**
-   * Starts and runs the conversation with the user
-   * Asks the user how many rounds they want to chat for
-   */
-  public void respawnChat() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Do you want to die or respawn to play again?");
-    scanner.close();
-    }
-
+    
 /**
  * The Main class is where we implement all the classes and run the game
  */
@@ -41,5 +31,8 @@ public class Main {
         Room lab = new Room("Lab", "This is a lab.", true);
         lab.addItem(secondSoul); 
         //Remember to add the computer after Computer.java is finished
+
+        Human tammy = new Human("teddy", 100, true);
+        tammy.die();
     }
 }
