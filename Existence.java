@@ -174,12 +174,12 @@ public class Existence {
 
     }
 
-    public void crawlTo(String s) {
+    public void crawlTo(Item s) {
         
     }
 
 
-    public void walkTo(String direction){
+    public void walkTo(Item s){
         
     }
 
