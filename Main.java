@@ -7,9 +7,9 @@ import java.util.Scanner;
   public void respawnChat() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Do you want to die or respawn to play again?");
+    scanner.close();
     }
-    Scanner.close();
-    
+
 /**
  * The Main class is where we implement all the classes and run the game
  */
