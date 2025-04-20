@@ -170,7 +170,7 @@ public class Existence {
     }
 
 
-    public void inspect() {
+    public void inspect(Item s) {
 
     }
 
