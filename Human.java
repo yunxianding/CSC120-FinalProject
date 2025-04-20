@@ -19,7 +19,7 @@ public class Human extends Existence {
     
 
     // To overload
-        /**
+    /**
      * Immediately changes one's isAlive state to false, and health to 0.
      * Often as a result of being electrocuted or hit by a laser beam.
      */
@@ -28,9 +28,11 @@ public class Human extends Existence {
         this.isAlive = false; 
         respawnChat();
     }
-    
+
     /**
      * User fights another existence
+     * @param e The robot to be fought
+     * @param times The number of times to fight
      */
     public void fight(Robot e, int times) {
         for(int i = 0; i <= times; i++) {

@@ -88,7 +88,11 @@ public class Computer extends Item {
         System.out.println("\nI need power On to function.");
     }
 
-    /** Toggles memory restoration on; cannot be turned off once on. */
+    /**
+     * Toggles memory restoration on; cannot be turned off once on.
+     * @param e The Existence whose memory is being toggled
+     * @param s The Item being used to toggle the memory input
+     */
     public void toggleMemory(Existence e, Item s) {
         if (this.memory == false) {
             this.memory = true;
@@ -127,7 +131,7 @@ public class Computer extends Item {
     /**
      * Attempts self-destruction. Only a human operator may trigger it.
      * @param operator the one pressing the button
-     * @param robot the robot body to destroy
+     * @param toBeDestroyed the robot body to destroy
      */
     public void selfDestruct(Human operator, Robot toBeDestroyed) {
         System.out.println("\nSelf-destruct sequence initiated! Boom!");
@@ -136,8 +140,8 @@ public class Computer extends Item {
 
     /**
      * (Overloaded) Robot tries to destroy another Robot
-     * @param operator
-     * @param toBeDestroyed
+     * @param operator the one pressing the button
+     * @param toBeDestroyed the one being destroyed
      */
     public void selfDestruct(Robot operator, Robot toBeDestroyed) {
         throw new RuntimeException("\nFAILED: A robot cannot do that to another robot.");
@@ -145,8 +149,8 @@ public class Computer extends Item {
 
     /**
      * (Overloaded)Robot tries to destroy a Human
-     * @param operator
-     * @param toBeDestroyed
+     * @param operator the one pressing the button
+     * @param toBeDestroyed the one being destroyed
      */
     public void selfDestruct(Robot operator, Human toBeDestroyed) {
         throw new RuntimeException("\nFAILED: Only a human can do this to a robot.");
