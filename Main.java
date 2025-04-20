@@ -31,8 +31,18 @@ public class Main {
         Room lab = new Room("Lab", "This is a lab.", true);
         lab.addItem(secondSoul); 
         //Remember to add the computer after Computer.java is finished
+        Computer computer = new Computer();
+        lab.addItem(computer);
 
         Human tammy = new Human("teddy", 100, true);
-        tammy.die();
+        //Robot joyce = new Robot("joyce", 100, true);
+
+        computer.unlock();
+
+        computer.clickFolder("History");
+        computer.clickFolder("Control");
+        computer.toggleReasoning();
+        computer.toggleMemory(tammy, secondSoul);
+
     }
 }

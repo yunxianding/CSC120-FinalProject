@@ -19,6 +19,16 @@ public class Human extends Existence {
     
 
     // To overload
+        /**
+     * Immediately changes one's isAlive state to false, and health to 0.
+     * Often as a result of being electrocuted or hit by a laser beam.
+     */
+    public void die() {
+        this.health = 0;
+        this.isAlive = false; 
+        respawnChat();
+    }
+    
     /**
      * User fights another existence
      */

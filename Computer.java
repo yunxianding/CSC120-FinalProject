@@ -28,11 +28,11 @@ public class Computer extends Item {
 
     /** Unlocks the computer so folders can be accessed. */
     public void unlock() {
-        if (locked) {
-            locked = false;
-            System.out.println("You hear a click—the computer is now unlocked. Two folders appear: History and Control Panel.");
+        if (this.locked == true) {
+            this.locked = false;
+            System.out.println("\nYou hear a click—the computer is now unlocked. Two folders appear: History and Control Panel.");
         } else {
-            System.out.println("The computer is already unlocked.");
+            System.out.println("\nThe computer is already unlocked.");
         }
     }
 
@@ -41,9 +41,8 @@ public class Computer extends Item {
      * @param folderName either "history" or "control"
      */
     public void clickFolder(String folderName) {
-        if (locked) {
-            System.out.println("The computer is locked. You need to unlock it first.");
-            return;
+        if (this.locked == true) {
+            System.out.println("\nThe computer is locked. You need to unlock it first.");
         }
         switch (folderName.toLowerCase()) {
             case "history":
@@ -54,57 +53,66 @@ public class Computer extends Item {
                 openControlPanel();
                 break;
             default:
-                System.out.println("No such folder. Try \"History\" or \"Control\".");
+                System.out.println("\nNo such folder. Try \"History\" or \"Control\".");
         } 
     }
 
     /** Prints the history. Not completed */
     private void openHistory() {
-        System.out.println("Today, April 13, 2005, I created the first Teddy prototype. This is looking great, I’m hoping…");
+        System.out.println("\nHistory: \n Today, April 13, 2005, I created the first Teddy prototype. This is looking great, I’m hoping that we can be best friends!");
     }
 
     /** Displays the control panel with current switch states. */
     private void openControlPanel() {
-        System.out.println("=== Control Panel ===");
-        System.out.println("Reasoning: " + (reasoning ? "On" : "Off"));
-        System.out.println("Power: " + (power ? "On" : "Off"));
-        System.out.println("Memory: " + (memory ? "On" : "Off"));
-        System.out.println("Laser: " + (laser ? "On" : "Off"));
-        System.out.println("TradeBody and SelfDestruct are present but restricted.");
+        System.out.println("\n=== Control Panel ===");
+        System.out.println("Reasoning: " + (this.reasoning ? "On" : "Off"));
+        System.out.println("Power: " + (this.power ? "On" : "Off"));
+        System.out.println("Memory: " + (this.memory ? "On" : "Off"));
+        System.out.println("Laser: " + (this.laser ? "On" : "Off"));
+        System.out.println("TradeBody: " + "(Restricted)");
+        System.out.println("SelfDestruct: " + "(Restricted)");
     }
 
     /** Toggles reasoning on; cannot be turned off once on. */
     public void toggleReasoning() {
-        if (!reasoning) {
-            reasoning = true;
-            System.out.println("Reasoning is now On. I can think more clearly.");
+        if (this.reasoning == false) {
+            this.reasoning = true;
+            System.out.println("\nReasoning is now On. I can think more clearly.");
         } else {
-            System.out.println("It's better for me to have reasoning abilities.");
+            System.out.println("\nIt's better for me to have reasoning abilities.");
         }
     }
 
     /** Attempts to toggle power off/on; power must remain on. */
     public void togglePower() {
-        System.out.println("I need power On to function.");
+        System.out.println("\nI need power On to function.");
     }
 
     /** Toggles memory restoration on; cannot be turned off once on. */
-    public void toggleMemory() {
-        if (!memory) {
-            memory = true;
-            System.out.println("Seems like I don’t have any memories. I need to restore them.");
+    public void toggleMemory(Existence e, Item s) {
+        if (this.memory == false) {
+            this.memory = true;
+            System.out.println("\nI'm starting to remember things...\n [ACHIEVEMENT UNLOCKED] You have unlocked the second piece of your soul.");
+            e.take(s); // Add the soul piece to player's inventory.
+            if(this.reasoning == false) {
+                System.out.println("\nI don't understand what these memories mean... How can I understand it?");
+            }
+            else if (this.reasoning == true) {
+                System.out.println("\nHmmm... \nThis is MY memory! I AM Teddy!\n [ACHIEVEMENT UNLOCKED] You found out about your true identity.\n Truth is: You used to be a scientist, who tried to make a robot called Teddy, but it outsmarted you and has traded bodies with you. Go get your body back!");
+            }
+
         } else {
-            System.out.println("I don’t want to delete these valuable memories!");
+            System.out.println("\nI don’t want to delete these valuable memories!");
         }
     }
 
     /** Toggles the lab’s lasers off; cannot be turned on again. */
     public void toggleLaser() {
-        if (laser) {
-            laser = false;
-            System.out.println("Laser is now Off. The path to the lab is clear.");
+        if (this.laser == true) {
+            this.laser = false;
+            System.out.println("\nLaser is now Off. The path to the lab is clear.");
         } else {
-            System.out.println("I’d better keep the laser Off for my own safety.");
+            System.out.println("\nI’d better keep the laser Off for my own safety.");
         }
     }
 
@@ -113,7 +121,7 @@ public class Computer extends Item {
      * Always prints restriction because no second existence present.
      */
     public void tradeBody(Existence e1, Existence e2) {
-        System.out.println("You can only trade bodies if there is at least another existence present.");
+        System.out.println("\nYou can only trade bodies if there is at least another existence present.");
     }
 
     /**
@@ -121,13 +129,28 @@ public class Computer extends Item {
      * @param operator the one pressing the button
      * @param robot the robot body to destroy
      */
-    public void selfDestruct(Existence operator, Existence robot) {
-        if (operator instanceof Human) {
-            System.out.println("Self-destruct sequence initiated! Boom!");
-            robot.die();
-        } else {
-            System.out.println("This button is for human use only.");
-        }
+    public void selfDestruct(Human operator, Robot toBeDestroyed) {
+        System.out.println("\nSelf-destruct sequence initiated! Boom!");
+        toBeDestroyed.die();
     }
+
+    /**
+     * (Overloaded) Robot tries to destroy another Robot
+     * @param operator
+     * @param toBeDestroyed
+     */
+    public void selfDestruct(Robot operator, Robot toBeDestroyed) {
+        throw new RuntimeException("\nFAILED: A robot cannot do that to another robot.");
+    }
+
+    /**
+     * (Overloaded)Robot tries to destroy a Human
+     * @param operator
+     * @param toBeDestroyed
+     */
+    public void selfDestruct(Robot operator, Human toBeDestroyed) {
+        throw new RuntimeException("\nFAILED: Only a human can do this to a robot.");
+    }
+
     
 }

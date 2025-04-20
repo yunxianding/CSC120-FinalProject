@@ -59,8 +59,6 @@ public class Existence {
     public void die() {
         this.health = 0;
         this.isAlive = false; 
-        System.out.println(this.getHealth());
-        respawnChat();
     }
 
     /**
