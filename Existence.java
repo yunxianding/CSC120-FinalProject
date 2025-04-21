@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,6 +9,8 @@ public class Existence {
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
     public Boolean isAlive;
+    private Object currentRoom;
+    private Object currentTarget;
 
     // Constructor
 
@@ -174,15 +177,49 @@ public class Existence {
 
     }
 
+    public void walkTo(Item s) {
+        if (s == null) {
+            System.out.println("There is nowhere to walk to.");
+            return;
+        }
+    
+    
+        if (currentTarget != null && currentTarget.equals(s)) {
+            System.out.println("You’re already near the " + s.getName() + ".");
+            return;
+        }
+    
+        if (currentRoom != null && !((Room) currentRoom).getItems().contains(s)) {
+            System.out.println("You can't walk to the " + s.getName() + " — it’s not in this room.");
+            return;
+        }
+    
+        currentTarget = s;
+        System.out.println(this.name + " walks steadily toward the " + s.getName() + ".");
+        System.out.println("You are now near the " + s.getName() + ".");
+    }
+    
+
+
     public void crawlTo(Item s) {
-        
+        if (s == null) {
+            System.out.println("There is nowhere to crawl to.");
+            return;
+        }
+    
+        if (currentTarget != null && currentTarget.equals(s)) {
+            System.out.println("You’re already near the " + s.getName() + ".");
+            return;
+        }
+    
+        if (currentRoom != null && !((Room) currentRoom).getItems().contains(s)) {
+            System.out.println("You can't crawl to the " + s.getName() + " — it’s not in this room.");
+            return;
+        }
+    
+        currentTarget = s;
+        System.out.println(this.name + " crawls slowly toward the " + s.getName() + ".");
+        System.out.println("You reach the " + s.getName() + ", catching your breath.");
     }
-
-
-    public void walkTo(Item s){
-        
-    }
-
-
     
 }
