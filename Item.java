@@ -8,12 +8,14 @@ public class Item{
     private String name;
     private String description;
     private Boolean canBeGrabbed;
+    private Item containedItem;
 
     /* Default Constructor */
     public Item(String name, String description, Boolean canBeGrabbed){
         this.name = name;
         this.description = description;
         this.canBeGrabbed = canBeGrabbed;
+        this.containedItem = null;
     }
 
     /**
@@ -38,5 +40,23 @@ public class Item{
      */
     public Boolean getItemStatus(){
         return this.canBeGrabbed;
+    }
+
+    /**
+     * Method for an item to store another item
+     */
+    public void storeItem(Item item){
+        if (this.containedItem == null) {
+            this.containedItem = item;
+        } else {
+            throw new RuntimeException("This item already contains another item.");
+        }
+    }
+
+    /**
+     * Method for removing the stored item if the player interacts with the container item
+     */
+    public void removeItem(Item item){
+        //To be constructed: if player takes it, remove the stored item
     }
 }
