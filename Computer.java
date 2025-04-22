@@ -1,5 +1,5 @@
 /**
- * Represents the lab computer with two folders (History & Control Panel)
+ * The computer class represents the lab computer with two folders (History & Control Panel)
  * and a set of toggleable controls.
  */
 public class Computer extends Item {
