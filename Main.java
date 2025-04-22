@@ -33,18 +33,29 @@ public class Main {
         lab.addItem(secondSoul); 
         //Remember to add the computer after Computer.java is finished
         Computer computer = new Computer();
-        lab.addItem(computer);
-        computer.storeItem(secondSoul);
+        // lab.addItem(computer);
+        // computer.storeItem(secondSoul);
 
         Human tammy = new Human("teddy", 100, true);
-        //Robot joyce = new Robot("joyce", 100, true);
+        // Robot joyce = new Robot("joyce", 100, true);
+        tammy.take(teddyBear);
+        tammy.use(teddyBear);
+        tammy.open(teddyBear);
+        tammy.touch(box);
+        tammy.take(leg);
+        tammy.think(teddyBear);
+        tammy.lookAround(bedroom);
+        tammy.walkTo(irisPot);
+        tammy.inspect(irisPot);
+        tammy.crawlTo(computer);
 
-        computer.unlock();
 
-        computer.clickFolder("History");
-        computer.clickFolder("Control");
-        computer.toggleReasoning();
-        computer.toggleMemory(tammy, secondSoul);
+        // computer.unlock();
+
+        // computer.clickFolder("History");
+        // computer.clickFolder("Control");
+        // computer.toggleReasoning();
+        // computer.toggleMemory(tammy, secondSoul);
 
     }
 }
