@@ -105,6 +105,12 @@ public class Existence {
 
     // Game Functions
 
+    public void open(Item s){
+        if (s.getCanBeOpened() == true){
+            s.getContainedItem();
+            System.out.println(s + " contains " + s.getContainedItem());
+        }
+    }
     /**
      * Browse all, and utilise a functionality of an item
      */
@@ -217,7 +223,7 @@ public class Existence {
         }
     
         currentTarget = s;
-        System.out.println(this.name + " walks steadily toward the " + s.getName() + ".");
+        System.out.println(" You walk to " + s.getName() + ".");
         System.out.println("You are now near the " + s.getName() + ".");
     }
     
