@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Existence {
@@ -169,14 +170,35 @@ public class Existence {
      * @param r The room one is in
      */
     public void lookAround(Room r) {
-        System.out.println("You are in: " + r.getDescription());
+        if (r == null) {
+        System.out.println("You’re not in a room.");
+        return;
+    }
+
+    System.out.println("You look around the room: " + r.getName());
+    List<Item> items = r.getItems();
+    if (items.isEmpty()) {
+        System.out.println("The room seems empty.");
+    } else {
+        System.out.println("You see the following items:");
+        for (Item item : items) {
+            System.out.println("- " + item.getName());
+        }
+    }
     }
 
     
     public void inspect(Item s) {
-
+        if (s == null) {
+            System.out.println("There is nothing to inspect.");
+            return;
+        }
+    
+        System.out.println("Inspecting the " + s.getName() + "...");
+        System.out.println("Description: " + s.getDescription());
+        System.out.println("Can be grabbed? " + (s.getItemStatus() ? "Yes" : "No"));
     }
-
+    
     public void walkTo(Item s) {
         if (s == null) {
             System.out.println("There is nowhere to walk to.");
