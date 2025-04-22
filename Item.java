@@ -9,6 +9,7 @@ public class Item{
     private String description;
     private Boolean canBeGrabbed;
     private Item containedItem;
+    private Boolean canBeOpened;
 
     /* Default Constructor */
     public Item(String name, String description, Boolean canBeGrabbed){
@@ -16,6 +17,7 @@ public class Item{
         this.description = description;
         this.canBeGrabbed = canBeGrabbed;
         this.containedItem = null;
+        this.canBeOpened = false;
     }
 
     /**
@@ -41,13 +43,29 @@ public class Item{
     public Boolean getItemStatus(){
         return this.canBeGrabbed;
     }
+    
+    /**
+     * Accessor for whether an item can be opened
+     * @return whether the item can be opened(whether it contains another item)
+     */
+    public Boolean getCanBeOpened(){
+        return this.canBeOpened;
+    }
 
+    /**
+     * Accessor for the item contained inside
+     * @return the item contained inside
+     */
+    public Item getContainedItem(){
+        return this.containedItem;
+    }
     /**
      * Method for an item to store another item
      */
     public void storeItem(Item item){
         if (this.containedItem == null) {
             this.containedItem = item;
+            this.canBeOpened = true;
         } else {
             throw new RuntimeException("This item already contains another item.");
         }
