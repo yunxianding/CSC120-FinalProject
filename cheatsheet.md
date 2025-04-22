@@ -30,18 +30,18 @@ Note:  It's a good idea to also make this list available inside the game, in res
 `selfDestruct(Robot operator, Human toBeDestroyed)`;
 
 If your game includes challenges that must be overcome to win, also list them below.
-**Stage 1**
+## Stage 1
 - [Task 1] Touch/grab the teddy bear on the bed and get the first soul;
 - [Task 2] Put on the leg hidden in a box;
 - [Task 3] Stand up, find and put on the eye in an irisPot;
 - [Task 4] Open the door leading to the lab;
-**Stage 2**
-- [Task 1] Crawl into the lab;
-- [Task 2] Unlock the computer and see 2 folders;
-- [Task 3] Click on the history folder, find the story, get the second soul;
-- [Task 4] Click on the controls folder and play around with the control buttons;
-**Stage 3**
-- [Task 1] Have conversations with the “human”;
-- [Task 2] Fight and electrocute the “human”;
-- [Task 3] Exchange bodies;
-- [Task 4] Choose to forgive or revenge;
+## Stage 2
+- [Task 5] Crawl into the lab;
+- [Task 6] Unlock the computer and see 2 folders;
+- [Task 7] Click on the history folder, find the story, get the second soul;
+- [Task 8] Click on the controls folder and play around with the control buttons;
+## Stage 3
+- [Task 9] Have conversations with the “human”;
+- [Task 10] Fight and electrocute the “human”;
+- [Task 11] Exchange bodies;
+- [Task 12] Choose to forgive or revenge;
