@@ -1,5 +1,3 @@
-
-    
 /**
  * The Main class is where we implement all the classes and run the game
  */
@@ -22,10 +20,13 @@ public class Main {
         bedroom.addItem(bed);
         bedroom.addItem(teddyBear);
         bedroom.addItem(firstSoul);
+        teddyBear.storeItem(firstSoul);
         bedroom.addItem(box);
         bedroom.addItem(leg);
-        bedroom.addItem(eye);
+        box.storeItem(leg);
         bedroom.addItem(irisPot);
+        bedroom.addItem(eye);
+        irisPot.storeItem(eye);
 
         //Create the Lab
         Room lab = new Room("Lab", "This is a lab.", true);
@@ -33,6 +34,7 @@ public class Main {
         //Remember to add the computer after Computer.java is finished
         Computer computer = new Computer();
         lab.addItem(computer);
+        computer.storeItem(secondSoul);
 
         Human tammy = new Human("teddy", 100, true);
         //Robot joyce = new Robot("joyce", 100, true);
