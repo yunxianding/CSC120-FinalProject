@@ -12,6 +12,7 @@ public class Existence {
     public Boolean isAlive;
     private Object currentRoom;
     private Object currentTarget;
+    private Boolean canGoToLab;
 
     // Constructor
 
@@ -23,6 +24,7 @@ public class Existence {
         this.isAlive = true;
         this.health = 100; // User starts the game with full health.
         this.inventory = new ArrayList<Item>();
+        this.canGoToLab = false; // Default to false
 
     }
 
@@ -48,6 +50,12 @@ public class Existence {
         return this.isAlive;
     }
     
+    /**
+     * Accessor for the player's state of whether they can go to the lab yet
+     */
+    public Boolean getCanGoToLab() {
+        return this.canGoToLab;
+    }
 
     /**
      * Decreases health (while fighting)
