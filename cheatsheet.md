@@ -20,7 +20,7 @@ Note:  It's a good idea to also make this list available inside the game, in res
 `clickFolder(String folderName)`;
 `openHistory()`;
 `openControlPanel()`;
-`toggoleReasoning()`;
+`toggleReasoning()`;
 `togglePower()`;
 `toggleMemory(Existence e, Item s)`;
 `toggleLaser()`;
