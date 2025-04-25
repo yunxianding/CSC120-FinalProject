@@ -9,7 +9,7 @@ public class Robot extends Existence {
     public Robot(String name, int health,  Boolean isAlive) {
         super(name, health, isAlive);
     }
-
+    
     // Methods
     public void electrocute(Human h) {
         System.out.println(h.getName() + " is temporarily unconscious.");

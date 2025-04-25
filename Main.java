@@ -1,8 +1,12 @@
+import java.util.Scanner;
+
 /**
  * The Main class is where we implement all the classes and run the game
  */
 public class Main {
     public static void main(String[] args) {
+        // Create the player's existence
+        Robot player = new Robot("Teddy", 100, true);
 
         //Create all the items needed
         Item bed = new Item("bed", "This is a bed.", false);
@@ -31,31 +35,35 @@ public class Main {
         //Create the Lab
         Room lab = new Room("Lab", "This is a lab.", true);
         lab.addItem(secondSoul); 
-        //Remember to add the computer after Computer.java is finished
         Computer computer = new Computer();
-        // lab.addItem(computer);
-        // computer.storeItem(secondSoul);
+        lab.addItem(computer);
+        computer.storeItem(secondSoul);
 
-        Human tammy = new Human("teddy", 100, true);
-        // Robot joyce = new Robot("joyce", 100, true);
-        tammy.take(teddyBear);
-        tammy.use(teddyBear);
-        tammy.open(teddyBear);
-        tammy.touch(box);
-        tammy.take(leg);
-        tammy.think(teddyBear);
-        tammy.lookAround(bedroom);
-        tammy.walkTo(irisPot);
-        tammy.inspect(irisPot);
-        tammy.crawlTo(computer);
+        // Messages:
+        String cheatSheet1 = "- \"use\" to use something.\n" + //
+                        "- \"take\" to take something.\n" + //
+                        "- \"inventory\" to see your inventory. \n" + //
+                        "- \"look\" to look around.\n" + //
+                        "- \"inspect\" to inspect something.\n" + //
+                        "- \"crawl\" to crawl somewhere.\n" + //
+                        "- \"walk\" to walk somewhere.";
 
+        System.out.println("You wake up in a bedroom, discovering that you only have a broken mechanical body, missing one leg and an eye.");
+        System.out.println("Input anything. \nPress h for help");
 
-        // computer.unlock();
-
-        // computer.clickFolder("History");
-        // computer.clickFolder("Control");
-        // computer.toggleReasoning();
-        // computer.toggleMemory(tammy, secondSoul);
-
+        Scanner scanner = new Scanner(System.in);
+    
+        String command = scanner.nextLine();
+        if(player.getCanGoToLab() == false) {
+            if (command.toLowerCase().equals("h")) {
+                System.out.println(cheatSheet1);
+            } else {
+                System.out.println("Command not understood.");
+            } 
+        } 
+        else if (player.getCanGoToLab() == true) {
+            
+        }
+        scanner.close();
     }
 }
