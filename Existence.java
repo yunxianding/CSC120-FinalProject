@@ -16,6 +16,11 @@ public class Existence {
     protected Boolean canWalk;
     protected Boolean canInspect;
 
+    // Stages
+    public Boolean stageOne;
+    public Boolean stageTwo;
+    public Boolean stageThree;
+
     // Constructor
 
     /**
@@ -31,6 +36,9 @@ public class Existence {
         this.canGoToLab = false; // Default to false
         this.canWalk = false; // Default to false because the player wake up with one lege missing
         this.canInspect = false; // Default to false because the player wake up with one eye missing
+        this.stageOne = true;
+        this.stageTwo = false;
+        this.stageThree = false;
 
     }
 
@@ -152,38 +160,59 @@ public class Existence {
 
     /**
      * Overloaded open method for a computer
+     * @param r The robot controlled on the computer
      * @param computer to be opened
+     * @param rm The room controlled on the computer
      */
-    public void open(Computer c) {
+    public void open(Robot r, Computer c, Room rm) {
         if (c.locked == true) {
             c.locked = false;
-            System.out.println("\nYou opend the computer. Two folders appear: History and Control Panel.");
+            System.out.println("\nYou opened the computer. Two folders appear: History and Control Panel.");
+
+            // Get user input
             Scanner scanner2 = new Scanner(System.in);
             System.out.println("Which folder do you want to see? Press H to open History folder and C to open Control Panel.");
+            
             String choice2 = scanner2.nextLine();
+
             if (choice2.equals("H")) {
                 System.out.println("You opened the History Folder...");
                 c.openHistory();
             } else if (choice2.equals("C")) {
                 System.out.println("You opened the control Panel...");
-                c.openControlPanel(Robot r, Room rm);
-                System.out.println("Do you want to toggle any controls? Enter the name of the control to toggle... ");
-                System.out.println("Do you want to toggle any controls? Enter the name of the control to toggle... ");
-                /** Scanner scanner3 = new Scanner(System.in);
+                c.openControlPanel(r,rm);
+                System.out.println("Do you want to toggle any controls? Enter a shorcut to toggle something... +");
+                System.out.println("Control Panel Shortcuts:\n" + //
+                                        "\n" + //
+                                        "- \"r\" for reasoning.\n" + //
+                                        "- \"p\" for power.\n" + //
+                                        "- \"m\" for memory.\n" + //
+                                        "- \"l\" for laser.\n" + //
+                                        "- \"tr\" to trade bodies.\n" + //
+                                        "- \"de\" to destruct an *entity*\n" + //
+                                        "");
+                 
+                // Getting commands
+                Scanner scanner3 = new Scanner(System.in);
+
                 String choice3 = scanner3.nextLine();
-                if (choice3.equals("Reasoning")) {
-                    c.toggleReasoning(Robot r);
-                } else if (choice3.equals("Power")) {
-                    c.togglePower(Robot r);
-                } else if (choice3.equals("Memory")) {
-                    c.toggleMemory(Robot r);
-                } else if (choice3.equals("Laser")) {
-                    c.toggleLaser(Room r);
-                } else if (choice3.equals("TradeBody") || choice3.equals("SelfDestruct")) {
+
+                if (choice3.equals("r")) {
+                    c.toggleReasoning(r);
+
+                } else if (choice3.equals("p")) {
+                    c.togglePower(r);
+
+                } else if (choice3.equals("m")) {
+                    c.toggleMemory(r);
+
+                } else if (choice3.equals("l")) {
+                    c.toggleLaser(rm);
+                } else if (choice3.equals("tr") || choice3.equals("de")) {
                     System.out.println("\n[RESTRICTED ACTION FAILED]");
                 } else {
                     System.out.println("[INVALID COMMAND]");
-                } scanner3.close(); */
+                } scanner3.close(); 
             } else {
                 System.out.println("[INVALID COMMAND]");
             } scanner2.close();
