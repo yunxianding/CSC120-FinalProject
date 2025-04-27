@@ -151,7 +151,7 @@ public class Existence {
     }
 
     /**
-     * Overloaded open() method for a computer
+     * Overloaded open method for a computer
      * @param computer to be opened
      */
     public void open(Computer c) {
