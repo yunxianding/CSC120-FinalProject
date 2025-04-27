@@ -31,7 +31,7 @@ Note:  It's a good idea to also make this list available inside the game, in res
 
 If your game includes challenges that must be overcome to win, also list them below.
 ## Stage 1
-- [Task 1] Touch/grab the teddy bear on the bed and get the first soul;
+- [Task 1] Grab the teddy bear on the bed and get the first soul;
 - [Task 2] Put on the leg hidden in a box;
 - [Task 3] Stand up, find and put on the eye in an irisPot;
 - [Task 4] Open the door leading to the lab;
