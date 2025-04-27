@@ -11,17 +11,19 @@ public class Room {
     // Attributes
     private String name = "<Name Unknown>";
     private String description = "<Description Unknown>";
-    private Boolean laserActive;
+    public Boolean laserEquipped;
+    public Boolean laserActive;
     private List<Item> items;
 
     /* Default Constructor */
-    public Room(String name, String description, Boolean laserActive){
+    public Room(String name, String description, Boolean laserEquipped, Boolean laserActive){
         if (name != null){
             this.name = name;
         }
         if (description != null){
             this.description = description;
         }
+        this.laserEquipped = laserEquipped;
         this.laserActive = laserActive;
         this.items = new ArrayList<>();
     }
@@ -40,14 +42,6 @@ public class Room {
      */
     public String getDescription(){
         return this.description;
-    }
-
-    /**
-     * Accessor for the laser status of the room
-     * @return True if the room is laser activated and false otherwise
-     */
-    public Boolean getLaserStatus(){
-        return this.laserActive;
     }
 
     /**
