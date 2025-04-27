@@ -140,7 +140,6 @@ public class Existence {
      */
     public void open(Item s) {
         if (s.getCanBeOpened() == true){
-            s.getContainedItem();
             System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
         } else {
             // To be constructed! A few scenorios:
@@ -152,7 +151,7 @@ public class Existence {
     }
 
     /**
-     * Overloaded oepn method for a computer
+     * Overloaded open method for a computer
      * @param computer to be opened
      */
     public void open(Computer c) {
