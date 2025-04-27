@@ -35,10 +35,13 @@ public class Computer extends Item {
         // trade body mechanism
     }
 
-    /** Displays the control panel with current switch states. */
+    /** Displays the control panel with current switch states. 
+     * @param r The robot whose controls are being toggled
+     * @param rm The room where the lasers are
+    */
     public void openControlPanel(Robot r, Room rm) {
         System.out.println("\n=== Control Panel ===");
-        System.out.println("\nReasoning: " + "On/Off" + "\nCurrent state: ReasoingOn?" + r.reasoningOn);
+        System.out.println("\nReasoning: " + "On/Off" + "\nCurrent state: ReasoningOn?" + r.reasoningOn);
         System.out.println("Power: " + "On/Off"+ "\nCurrent state: PoweredOn?" + r.poweredOn);
         System.out.println("Memory: " + "On/Off"+ "\nCurrent state: MemoryOn?" + r.memoryOn);
         System.out.println("Laser: " + "On/Off"+ "\nCurrent room: "+ rm.getName() + "\nCurrent state: LaserOn?" + rm.laserActive);
@@ -46,7 +49,10 @@ public class Computer extends Item {
         System.out.println("SelfDestruct: " + "RESTRICTED");
     }
 
-    /** Toggles reasoning on/off */
+
+    /** Toggles reasoning on/off 
+     * @param r The robot 
+    */
     public void toggleReasoning(Robot r) {
         if (r.reasoningOn == false) {
             r.reasoningOn = true;
@@ -57,7 +63,9 @@ public class Computer extends Item {
         }
     }
 
-    /** Attempts to toggle power off/on */
+    /** Attempts to toggle power off/on
+     * @param r The robot 
+    */
     public void togglePower(Robot r) {
         if (r.poweredOn == true) {
             r.poweredOn = false;
@@ -73,11 +81,10 @@ public class Computer extends Item {
      * @param e The Existence whose memory is being toggled
      * @param s The Item being used to toggle the memory input
      */
-    public void toggleMemory(Robot r, Item s) {
+    public void toggleMemory(Robot r) {
         if (r.memoryOn == false) {
             r.memoryOn = true;
             System.out.println("\n[MEMORIES ON] \nI'm starting to remember things...\n [ACHIEVEMENT UNLOCKED] You have unlocked the second piece of your soul.");
-            r.take(s); // Add the soul piece to player's inventory.
             if(r.reasoningOn == false) {
                 System.out.println("\nI don't understand what these memories mean... How can I understand it?");
             } else if (r.reasoningOn == true) {
@@ -89,7 +96,9 @@ public class Computer extends Item {
         }
     }
 
-    /** Toggles the lab’s lasers off/on */
+    /** Toggles the lab’s lasers off/on 
+     * @param r The room where the lasers are
+    */
     public void toggleLaser(Room r) {
         if (r.laserEquipped == true && r.laserActive == true) {
             r.laserActive = false;
@@ -104,6 +113,8 @@ public class Computer extends Item {
     /**
      * Attempt to trade bodies between two existences.
      * Always prints restriction because no second existence present.
+     * @param e1 The first Existence
+     * @param e2 The second Existence
      */
     public void tradeBody(Existence e1, Existence e2) {
         System.out.println("\nYou can only trade bodies if there is at least another existence present.");
