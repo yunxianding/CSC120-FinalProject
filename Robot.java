@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Robot extends Existence {
 
     //Attributes
-    Boolean poweredOn;
-    Boolean reasoningOn;
-    Boolean memoryOn;
+    public Boolean poweredOn;
+    public Boolean reasoningOn;
+    public Boolean memoryOn;
 
     /**
      * Default constructor for 'Human'
@@ -35,11 +35,12 @@ public class Robot extends Existence {
      * @param item s
      */
     public void putOn(Item s) {
-        if (this.inventory.contains(s) && s.getCanBePutOn() == true) {
+        if (this.inventory.contains(s) && s.canBePutOn == true) {
             System.out.println("You have put on " + s.getName() + ".");
             this.inventory.remove(s);
-        } // To be contructed
-    }
+        } else {
+            System.out.println("INVALID COMMAND");
+        }
 
     /**
      * The robot can electrocute the human and make the human fall unconscious
