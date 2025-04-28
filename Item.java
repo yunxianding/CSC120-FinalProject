@@ -7,10 +7,10 @@ public class Item {
     //Attributes
     private String name;
     private String description;
-    private Boolean canBeGrabbed;
+    public Boolean canBeGrabbed;
     private Item containedItem;
-    private Boolean canBeOpened;
-    private Boolean canBePutOn;
+    public Boolean canBeOpened;
+    public Boolean canBePutOn;
 
     /* Default Constructor */
     public Item(String name, String description, Boolean canBeGrabbed, Boolean canBeOpened, Boolean canBePutOn) {
@@ -50,30 +50,6 @@ public class Item {
     }
 
     /**
-     * Accessor for canBeGrabbed
-     * We wrote a separate accessor for this because it will be used in the grab method for existence
-     */
-    public Boolean getCanBeGrabbed() {
-        return this.canBeGrabbed;
-    }
-
-    /**
-     * Accessor for canBeOpened
-     * We wrote a separate accessor for this because it will be use in the open method for existence
-     */
-    public Boolean getCanBeOpened() {
-        return this.canBeOpened;
-    }
-
-    /**
-     * Accessor for canBePutOn
-     * We wrote a separate accessor for this because it will be used in the putOn method for robots
-     */
-    public Boolean getCanBePutOn() {
-        return this.canBePutOn;
-    }
-
-    /**
      * Accessor for the item contained inside
      * @return the item contained inside
      */
@@ -87,8 +63,6 @@ public class Item {
         if (this.containedItem == null) {
             this.containedItem = item;
             this.canBeOpened = true;
-        } else {
-            throw new RuntimeException("This item already contains another item.");
-        }
+        } 
     }
 }
