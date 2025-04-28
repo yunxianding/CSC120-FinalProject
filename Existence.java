@@ -12,9 +12,9 @@ public class Existence {
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
     public Boolean isAlive;
-    protected Boolean canGoToLab;
-    protected Boolean canWalk;
-    protected Boolean canInspect;
+    public Boolean canGoToLab;
+    public Boolean canWalk;
+    public Boolean canInspect;
 
     // Stages
     public Boolean stageOne;
@@ -61,34 +61,6 @@ public class Existence {
     }
 
     /**
-     * Accessor for user's isAlive value (true/false)
-     */
-    public Boolean getIsAlive() {
-        return this.isAlive;
-    }
-    
-    /**
-     * Accessor for the player's state of whether they can go to the lab yet
-     */
-    public Boolean getCanGoToLab() {
-        return this.canGoToLab;
-    }
-
-    /**
-     * Accessor for the player's state of whether they can walk yet (only with both legs can)
-     */
-    public Boolean getCanWalk() {
-        return this.canWalk;
-    }
-
-    /**
-     * Accessor for the player's state of whether they can inspect yet (only with both eyes can)
-     */
-    public Boolean getCanInspect() {
-        return this.canInspect;
-    }
-    
-    /**
      * Decreases health (while fighting)
      */
     public void weaken() {
@@ -100,11 +72,10 @@ public class Existence {
      * Often as a result of being electrocuted or hit by a laser beam.
      */
     public void die() {
-        if (this.health <= 0) {
-            this.isAlive = false;
-            System.out.println("You have died.");
-            respawnChat();
-        }
+        this.health = 0;
+        this.isAlive = false;
+        System.out.println("You have died.");
+        respawnChat();
     }
 
     /**
@@ -147,7 +118,7 @@ public class Existence {
      * @param item to be opened
      */
     public void open(Item s) {
-        if (s.getCanBeOpened() == true){
+        if (s.canBeOpened == true) {
             System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
         } else {
             // To be constructed! A few scenorios:
@@ -182,14 +153,14 @@ public class Existence {
                 System.out.println("You opened the control Panel...");
                 c.openControlPanel(r,rm);
                 System.out.println("Do you want to toggle any controls? Enter a shorcut to toggle something... +");
-                System.out.println("Control Panel Shortcuts:\n" + //
-                                        "\n" + //
-                                        "- \"r\" for reasoning.\n" + //
-                                        "- \"p\" for power.\n" + //
-                                        "- \"m\" for memory.\n" + //
-                                        "- \"l\" for laser.\n" + //
-                                        "- \"tr\" to trade bodies.\n" + //
-                                        "- \"de\" to destruct an *entity*\n" + //
+                System.out.println("Control Panel Shortcuts:\n" + 
+                                        "\n" + 
+                                        "- \"r\" for reasoning.\n" + 
+                                        "- \"p\" for power.\n" + 
+                                        "- \"m\" for memory.\n" + 
+                                        "- \"l\" for laser.\n" + 
+                                        "- \"tr\" to trade bodies.\n" + 
+                                        "- \"de\" to destruct an *entity*\n" +
                                         "");
                  
                 // Getting commands
@@ -237,7 +208,7 @@ public class Existence {
      */
     public void take(Item s) {
         if(this.inventory.contains(s)) {
-            throw new RuntimeException("You already have " + s.getName() + ".");
+            System.out.println("You already have " + s.getName() + ".");
         } else {
             this.inventory.add(s);
             System.out.println(s.getName() + " successfully added to your inventory!");
@@ -273,7 +244,7 @@ public class Existence {
      */
     public void fight(Existence e) {
         this.weaken();
-        System.out.println("I am fighting!");
+        System.out.println("Fighting!!!");
     }
 
     /**
@@ -283,7 +254,7 @@ public class Existence {
     public void lookAround(Room r) {
         if (r == null) {
         System.out.println("You're not in a room.");
-        return;
+
         } System.out.println("You look around the: " + r.getName() + r.getDescription());
     }
 
@@ -294,7 +265,6 @@ public class Existence {
     public void inspect(Item s) {
         if (s == null) {
             System.out.println("There is nothing to inspect.");
-            return;
         }
     
         System.out.println("Inspecting the " + s.getName() + "...");
@@ -339,4 +309,5 @@ public class Existence {
             System.out.println("You can't crawl to the " + s.getName() + " because it's not in this room.");
         }
     }
+
 }
