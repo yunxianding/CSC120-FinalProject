@@ -99,14 +99,14 @@ public class Main {
                         System.out.println(cheatSheet1 + cheatSheet2);
                     } else if (player.stageThree ==  true) {
                         System.out.println(cheatSheet1 + cheatSheet2 + cheatSheet3);
-                    }
+                    } 
                 }
 
                 // If the command is exit, we break out of the loop
-                if (command.equalsIgnoreCase("exit") {
-                    System.out.println("Goodbye! We hope you enjoyed the game!")
+                if (command.equalsIgnoreCase("exit")) {
+                    System.out.println("Goodbye! We hope you enjoyed the game!");
                     break;
-                })
+                }
 
                 // If the command is take, look for the next word to see what item to pick
                 else if (command.equalsIgnoreCase("take")) {
@@ -120,7 +120,11 @@ public class Main {
                             player.take(eye);
                         } else if (itemName.equalsIgnoreCase("toy")) {
                             player.take(teddyBear);
-                        } 
+                        } else {
+                            System.out.println("INVALID COMMAND");
+                        }
+                    } else {
+                        System.out.println("INVALID COMMAND");
                     }
           
                 } 

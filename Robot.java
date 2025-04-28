@@ -41,6 +41,7 @@ public class Robot extends Existence {
         } else {
             System.out.println("INVALID COMMAND");
         }
+    }
 
     /**
      * The robot can electrocute the human and make the human fall unconscious
