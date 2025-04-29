@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        // Set game status
+        Boolean gameOn = true;
+
         //Create all the items needed
         Item bed = new Item("bed", "'This is a bed.'", false, false, false);
         Item teddyBear = new Item("teddyBear", "'This teddy bear feels soft.'", true, false, false);
@@ -41,7 +44,7 @@ public class Main {
         String basicInstructions = 
                         "\n Here is the basic instruction: Type the command with any item to execute that command on that item." +
                         "(E.g: 'open door')" +
-                        "\n Type 'help' to see available commands at current stage, 'exit' to exit the game.";
+                        "\n Type 'help' to see available commands at current stage, 'exit' to exit the game at any point.";
         String enteringMessage = 
                         "\n Now get ready for the game..." +
                         "\n......LOADING......" +
@@ -83,129 +86,136 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         // Game loop
-        while (true) {
+        while (gameOn == true) {
 
             // Accept a string of player inputs and split them
             String input = scanner.nextLine();
             String[] words = input.split(" ");
 
             if (words.length > 0) {
-                String command = words[0]; // The first word is the command
-            
-                // If the command is help, we print out cheatsheets based on stages
-                if (command.equalsIgnoreCase("help")) {
-                    if (player.stageOne ==  true) {
-                        System.out.println(cheatSheet1);
-                    } else if (player.stageTwo ==  true) {
-                        System.out.println(cheatSheet1 + cheatSheet2);
-                    } else if (player.stageThree ==  true) {
-                        System.out.println(cheatSheet1 + cheatSheet2 + cheatSheet3);
-                    } 
-                }
+                String command = words[0].toLowerCase(); // The first word is the command
 
-                // If the command is exit, we break out of the loop
-                if (command.equalsIgnoreCase("exit")) {
-                    System.out.println("Goodbye! We hope you enjoyed the game!");
-                    break;
-                }
+                // Trying switch case
+                switch(command) {
 
-                // If the command is health, we print out the current health of the player
-                if (command.equalsIgnoreCase("health")) {
-                    System.out.println("Your current health is: " + player.getHealth() + " /100");
-                }
-
-                // If the command is inventory, we print out the player's inventory
-                if (command.equalsIgnoreCase("inventory")) {
-                    player.printInventory();
-                }
-
-                // If the command is look, we let the player look around and print out the decription of the room
-                if (command.equalsIgnoreCase("look")) {
-                    if (player.stageOne == true) {
-                        player.lookAround(bedroom);
-                    } else if (player.stageTwo == true || player.stageThree == true) {
-                        player.lookAround(lab);
-                    } else {
-                        System.out.println("INVALID COMMAND");
-                    }
-                } 
-
-                // If the command is take, look for the next word to see what item to pick
-                if (command.equalsIgnoreCase("take")) {
-                    if (words.length >= 2) {
-                        String itemName = words[1]; // The second word is the item's name
+                    // Print cheatsheets based on current stage
+                    case "help":
+                        if (player.stageOne ==  true) {
+                            System.out.println(cheatSheet1);
+                        } else if (player.stageTwo ==  true) {
+                            System.out.println(cheatSheet1 + cheatSheet2);
+                        } else if (player.stageThree ==  true) {
+                            System.out.println(cheatSheet1 + cheatSheet2 + cheatSheet3);
+                        } 
+                        break;
                     
-                        // The player can take the teddy bear, leg and eye
-                        if (itemName.equalsIgnoreCase("leg")) {
-                            player.take(leg);
-                            System.out.println("'Let me try to put it on...'");
-                        } else if (itemName.equalsIgnoreCase("eye")) {
-                            player.take(eye);
-                            System.out.println("'Let me try to put it on...'");
-                        } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
-                            player.take(teddyBear);
+                    // Let the player exit at any point in the game
+                    case "exit":
+                        System.out.println("Goodbye! We hope you enjoyed the game!");
+                        gameOn = false; // Change game state to break out the user input loop (because the game ended)
+                        break;
+                    
+                    // Print current health
+                    case "health":
+                        System.out.println("Your current health is: " + player.getHealth() + " /100");
+                        break;
+
+                    // Print inventory
+                    case "inventory":
+                        player.printInventory();
+                        break;
+
+                    // Look around -> Print description of Room (based on current stage)
+                    case "look":
+                        if (player.stageOne == true) {
+                            player.lookAround(bedroom);
+                        } else if (player.stageTwo == true || player.stageThree == true) {
+                            player.lookAround(lab);
                         } else {
                             System.out.println("INVALID COMMAND");
                         }
-                    } 
-                }
+                        break;
 
-                // If the command is touch, We let the player touch the item and return its description
-                if (command.equalsIgnoreCase("touch")) {
-                    if (words.length >= 2) {
-                        String itemName = words[1]; // The second word is the item's name
-                    
-                        // The player can touch all the items: bed, teddy bear, box, leg, iris pot, eye and door
-                        if (itemName.equalsIgnoreCase("bed")) {
-                            player.touch(bed);
-                        } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
-                            player.touch(teddyBear);
-                        } else if (itemName.equalsIgnoreCase("box")) {
-                            player.touch(box);
-                        } else if (itemName.equalsIgnoreCase("leg")) {
-                            player.touch(leg);
-                        } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
-                            player.touch(irisPot);
-                        } else if (itemName.equalsIgnoreCase("eye")) {
-                            player.touch(eye);
-                        } else if (itemName.equalsIgnoreCase("door")) {
-                            player.touch(door);
-                        } else {
-                            System.out.println("INVALID COMMAND");
-                        }
-                    } 
-                }
-
-                // If the command is inspect, We let the player inspect the item and return its description and status
-                if (command.equalsIgnoreCase("inspect")) {
-                    if (words.length >= 2) {
-                        String itemName = words[1]; // The second word is the item's name
+                    // Take items => Look for user's next word to specify the Item being taken
+                    case "take":
+                        if (words.length >= 2) {
+                            String itemName = words[1]; // The second word is the item's name
                         
-                        // The player can only inspect if this attribute is true
-                        if (player.canInspect == true) {
-                            // The player can inspect all the items: bed, teddy bear, box, leg, iris pot, eye and door
-                            if (itemName.equalsIgnoreCase("bed")) {
-                                player.inspect(bed);
-                            } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
-                                player.inspect(teddyBear);
-                            } else if (itemName.equalsIgnoreCase("box")) {
-                                player.inspect(box);
-                            } else if (itemName.equalsIgnoreCase("leg")) {
-                                player.inspect(leg);
-                            } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
-                                player.inspect(irisPot);
+                            // Allow 3 items to be taken: the teddyBear, leg and eye
+                            if (itemName.equalsIgnoreCase("leg")) {
+                                player.take(leg);
+                                System.out.println("'Let me try to put it on...'");
                             } else if (itemName.equalsIgnoreCase("eye")) {
-                                player.inspect(eye);
-                            } else if (itemName.equalsIgnoreCase("door")) {
-                                player.inspect(door);
+                                player.take(eye);
+                                System.out.println("'Let me try to put it on...'");
+                            } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                                player.take(teddyBear);
                             } else {
-                            System.out.println("INVALID COMMAND");
+                                System.out.println("INVALID COMMAND");
                             }
-                        } else {
-                            System.out.println("You cannot inspect with one one eye missing!");
-                        }
-                    } 
-                } 
+                        } 
+                        break;
+
+                    // Touch things to get their descriptions
+                    case "touch":
+                        if (words.length >= 2) {
+                            String itemName = words[1]; // The second word is the item's name
+                        
+                            // The player can touch: bed, teddyBear, box, leg, irisPot, eye and door
+                            if (itemName.equalsIgnoreCase("bed")) {
+                                player.touch(bed);
+                            } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                                player.touch(teddyBear);
+                            } else if (itemName.equalsIgnoreCase("box")) {
+                                player.touch(box);
+                            } else if (itemName.equalsIgnoreCase("leg")) {
+                                player.touch(leg);
+                            } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                                player.touch(irisPot);
+                            } else if (itemName.equalsIgnoreCase("eye")) {
+                                player.touch(eye);
+                            } else if (itemName.equalsIgnoreCase("door")) {
+                                player.touch(door);
+                            } else {
+                                System.out.println("INVALID COMMAND");
+                            }
+                        } 
+                        break;
+
+                    // Inspect items to get its description, and status
+                    case "inspect":
+                        if (words.length >= 2) {
+                            String itemName = words[1]; // The second word is the item's name
+                            
+                            // The player can only inspect if this attribute is true
+                            if (player.canInspect == true) {
+                                // The player can inspect all the items: bed, teddy bear, box, leg, iris pot, eye and door
+                                if (itemName.equalsIgnoreCase("bed")) {
+                                    player.inspect(bed);
+                                } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                                    player.inspect(teddyBear);
+                                } else if (itemName.equalsIgnoreCase("box")) {
+                                    player.inspect(box);
+                                } else if (itemName.equalsIgnoreCase("leg")) {
+                                    player.inspect(leg);
+                                } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                                    player.inspect(irisPot);
+                                } else if (itemName.equalsIgnoreCase("eye")) {
+                                    player.inspect(eye);
+                                } else if (itemName.equalsIgnoreCase("door")) {
+                                    player.inspect(door);
+                                } else {
+                                System.out.println("INVALID COMMAND");
+                                }
+                            } else {
+                                System.out.println("You cannot inspect with one one eye missing!");
+                            }
+                        } 
+                    break;
+
+                }
+
+
 
                 // crawl to
 
