@@ -44,7 +44,7 @@ public class Computer extends Item {
         System.out.println("\nReasoning: " + "On/Off" + "\nCurrent state: ReasoningOn?" + r.reasoningOn);
         System.out.println("Power: " + "On/Off"+ "\nCurrent state: PoweredOn?" + r.poweredOn);
         System.out.println("Memory: " + "On/Off"+ "\nCurrent state: MemoryOn?" + r.memoryOn);
-        System.out.println("Laser: " + "On/Off"+ "\nCurrent room: "+ rm.getName() + "\nCurrent state: LaserOn?" + rm.laserActive);
+        System.out.println("Laser: " + "On/Off"+ "\nCurrent room: "+ rm.name + "\nCurrent state: LaserOn?" + rm.laserActive);
         System.out.println("TradeBody: " + "RESTRICTED");
         System.out.println("SelfDestruct: " + "RESTRICTED");
     }
