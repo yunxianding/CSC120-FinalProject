@@ -1,8 +1,0 @@
-- "unlock" to unlock something.
-- "click" to click a folder.
-- "open" to open something.
-- "toggle to toggle buttons on computer.
-- "trade" to trade bodies with another existence.
-- "destroy *entity*" - to attempt to destruct another existence
-- "electrocute" to electrocute another existence
-- "fight *entity* *n* times" to fight another existence *n* number of times.

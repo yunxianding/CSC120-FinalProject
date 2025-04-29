@@ -1,7 +1,0 @@
-- "use" to use something.
-- "take" to take something.
-- "inventory" to see your inventory. 
-- "look" to look around.
-- "inspect" to inspect something.
-- "crawl" to crawl somewhere.
-- "walk" to walk somewhere.
