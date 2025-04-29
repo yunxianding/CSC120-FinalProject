@@ -7,16 +7,16 @@ public class Main {
     public static void main(String[] args) {
 
         //Create all the items needed
-        Item bed = new Item("bed", "This is a bed.", false, false, false);
-        Item teddyBear = new Item("teddyBear", "This teddy bear feels soft.", true, false, false);
-        Item box = new Item("box", "This is a box. There is a leg inside.", false, true, false);
-        Item leg = new Item("leg", "This looks like my leg. I'd better put it on to walk.", true, false, true);
-        Item irisPot = new Item("irisPot", "There is a label on the plantpot saying 'iris pot'. There is an inside.", false, true, false);
-        Item eye = new Item("eye", "This looks like my eye. I'd better put it on for better vision.", true, false, true);
-
+        Item bed = new Item("bed", "'This is a bed.'", false, false, false);
+        Item teddyBear = new Item("teddyBear", "'This teddy bear feels soft.'", true, false, false);
+        Item box = new Item("box", "'This is a box. There is a leg inside.'", false, true, false);
+        Item leg = new Item("leg", "'This looks like my leg. I'd better put it on to walk.'", true, false, true);
+        Item irisPot = new Item("irisPot", "'There is a label on the plantpot saying 'iris pot'. There is an eye inside.'", false, true, false);
+        Item eye = new Item("eye", "'This looks like my eye. I'd better put it on for better vision.'", true, false, true);
+        Item door = new Item("door", "'This is a door connecting bedroom to another room. I wonder where is it leading to...'", false, true, false);
 
         //Create the Bedroom
-        Room bedroom = new Room("Bedroom", "This is a bedroom. I can see a bed and a toy.", false, false);
+        Room bedroom = new Room("Bedroom", "'This is a bedroom. I can see a bed and a teddy bear.'", false, false);
         bedroom.addItem(bed);
         bedroom.addItem(teddyBear);
         bedroom.addItem(box);
@@ -25,6 +25,7 @@ public class Main {
         bedroom.addItem(irisPot);
         bedroom.addItem(eye);
         irisPot.storeItem(eye);
+        bedroom.addItem(door);
 
         //Create the Lab
         Room lab = new Room("Lab", "This is a lab. I can see a computer.", true,true);
@@ -81,7 +82,7 @@ public class Main {
         // Open a scanner
         Scanner scanner = new Scanner(System.in);
         
-        // game loop
+        // Game loop
         while (true) {
 
             // Accept a string of player inputs and split them
@@ -91,7 +92,7 @@ public class Main {
             if (words.length > 0) {
                 String command = words[0]; // The first word is the command
             
-                // If the command is asking for help, print out cheatsheets based on stages
+                // If the command is help, we print out cheatsheets based on stages
                 if (command.equalsIgnoreCase("help")) {
                     if (player.stageOne ==  true) {
                         System.out.println(cheatSheet1);
@@ -108,31 +109,167 @@ public class Main {
                     break;
                 }
 
+                // If the command is health, we print out the current health of the player
+                if (command.equalsIgnoreCase("health")) {
+                    System.out.println("Your current health is: " + player.getHealth() + " /100");
+                }
+
+                // If the command is inventory, we print out the player's inventory
+                if (command.equalsIgnoreCase("inventory")) {
+                    player.printInventory();
+                }
+
+                // If the command is look, we let the player look around and print out the decription of the room
+                if (command.equalsIgnoreCase("look")) {
+                    if (player.stageOne == true) {
+                        player.lookAround(bedroom);
+                    } else if (player.stageTwo == true || player.stageThree == true) {
+                        player.lookAround(lab);
+                    } else {
+                        System.out.println("INVALID COMMAND");
+                    }
+                } 
+
                 // If the command is take, look for the next word to see what item to pick
-                else if (command.equalsIgnoreCase("take")) {
-                    if (words.length == 2) {
+                if (command.equalsIgnoreCase("take")) {
+                    if (words.length >= 2) {
                         String itemName = words[1]; // The second word is the item's name
                     
-                        // The player can take the toy(teddyBear), the leg and the eye
+                        // The player can take the teddy bear, leg and eye
                         if (itemName.equalsIgnoreCase("leg")) {
                             player.take(leg);
+                            System.out.println("'Let me try to put it on...'");
                         } else if (itemName.equalsIgnoreCase("eye")) {
                             player.take(eye);
-                        } else if (itemName.equalsIgnoreCase("toy")) {
+                            System.out.println("'Let me try to put it on...'");
+                        } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
                             player.take(teddyBear);
                         } else {
                             System.out.println("INVALID COMMAND");
                         }
-                    } else {
-                        System.out.println("INVALID COMMAND");
-                    }
-          
+                    } 
+                }
+
+                // If the command is touch, We let the player touch the item and return its description
+                if (command.equalsIgnoreCase("touch")) {
+                    if (words.length >= 2) {
+                        String itemName = words[1]; // The second word is the item's name
+                    
+                        // The player can touch all the items: bed, teddy bear, box, leg, iris pot, eye and door
+                        if (itemName.equalsIgnoreCase("bed")) {
+                            player.touch(bed);
+                        } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                            player.touch(teddyBear);
+                        } else if (itemName.equalsIgnoreCase("box")) {
+                            player.touch(box);
+                        } else if (itemName.equalsIgnoreCase("leg")) {
+                            player.touch(leg);
+                        } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                            player.touch(irisPot);
+                        } else if (itemName.equalsIgnoreCase("eye")) {
+                            player.touch(eye);
+                        } else if (itemName.equalsIgnoreCase("door")) {
+                            player.touch(door);
+                        } else {
+                            System.out.println("INVALID COMMAND");
+                        }
+                    } 
+                }
+
+                // If the command is inspect, We let the player inspect the item and return its description and status
+                if (command.equalsIgnoreCase("inspect")) {
+                    if (words.length >= 2) {
+                        String itemName = words[1]; // The second word is the item's name
+                        
+                        // The player can only inspect if this attribute is true
+                        if (player.canInspect == true) {
+                            // The player can inspect all the items: bed, teddy bear, box, leg, iris pot, eye and door
+                            if (itemName.equalsIgnoreCase("bed")) {
+                                player.inspect(bed);
+                            } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                                player.inspect(teddyBear);
+                            } else if (itemName.equalsIgnoreCase("box")) {
+                                player.inspect(box);
+                            } else if (itemName.equalsIgnoreCase("leg")) {
+                                player.inspect(leg);
+                            } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                                player.inspect(irisPot);
+                            } else if (itemName.equalsIgnoreCase("eye")) {
+                                player.inspect(eye);
+                            } else if (itemName.equalsIgnoreCase("door")) {
+                                player.inspect(door);
+                            } else {
+                            System.out.println("INVALID COMMAND");
+                            }
+                        } else {
+                            System.out.println("You cannot inspect with one one eye missing!");
+                        }
+                    } 
                 } 
-            } else {
-                System.out.println("INVALID COMMAND");
+
+                // crawl to
+
+                // walk to
+
+                // open
+
+                // put on
+
+                // put down
+
+                // unlock
+
+                // click
+
+                // toggle
+
+                // trade
+
+                // electrocute
+
+                // fight
+
+                // die (we should put the respawn chat here instead of inside the existence class)
+
+                // Task 1
+
+                // Task 2
+
+                // Task 3
+
+                // Stage 2
+
+                // Task 4
+
+                // Task 5
+
+                // Task 6
+
+                // Task 7
+
+                // Stage 3
+
+                // Task 8
+
+                // Task 9
+
+                // Task 10
+
+                // Task 11
+
+                // Task 12
+
+                // Ending 1 (laser)
+
+                // Ending 2 (power off)
+
+                // Ending 3 (self destruct)
+
+                // Ending 4 (forgive)
+
+                // Ending 5 (revenge)
             }
-        scanner.close();
-        }
+        } scanner.close(); // close the scanner outside of the while loop
     }
 }
 
