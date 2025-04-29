@@ -50,11 +50,4 @@ public class Robot extends Existence {
         h.isUnconscious = true;
         System.out.println(h.getName() + " is temporarily unconscious.");
     }
-
-    // To overload
-
-    // To override
-
-    
-
 }
