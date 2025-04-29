@@ -5,8 +5,8 @@
 public class Item {
 
     //Attributes
-    private String name;
-    private String description;
+    public String name;
+    public String description;
     public Boolean canBeGrabbed;
     private Item containedItem;
     public Boolean canBeOpened;
@@ -23,27 +23,11 @@ public class Item {
     }
 
     /**
-     * Accessor for item's name
-     * @return name of the item
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Accessor for item's description
-     * @return description of the item
-     */
-    public String getDescription() {
-        return this.description;
-    }
-
-    /**
      * Accessor for item's status(whether it can be grabbed/opened/put on)
      * @return the statusof the item
      */
     public String getItemStatus() {
-        return ("\n Item status for " + this.getName() +
+        return ("\n Item status for " + this.name +
                 "\n can be grabbed: " + this.canBeGrabbed +
                 "\n can be opened: " + this.canBeOpened +
                 "\n can be put on: " + this.canBePutOn);
@@ -56,6 +40,7 @@ public class Item {
     public Item getContainedItem(){
         return this.containedItem;
     }
+
     /**
      * Method for an item to store another item
      */
