@@ -28,12 +28,4 @@ public class Human extends Existence {
         this.canInspect = true;
         this.isUnconscious = false;
     }
-
-
-    // Methods
-    
-
-    // To overload
-    
-    // To override
 }
