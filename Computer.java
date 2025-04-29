@@ -28,20 +28,20 @@ public class Computer extends Item {
         + "\n Today, June 27, 2006, deep neural network is a good idea!"
         + "\n Today, September 12, 2006, Teddy's artificial intelligence is developing fast."
         + "\n Today, January 2, 2007, Teddy didn't respond when I called."
-        +"\n Today, January 31, 2007, Teddy is still ignoring me and now won't listen to me when I instruct him"
-        + "\n Today, February 14, 2007, I brought Teddy roses for valentines and he destroyed them and burst all the balloons"
-        +"\n March 1, 2007, I have a conversation with Teddy and ask him about his weird behaviour"
+        +"\n Today, January 31, 2007, Teddy is still ignoring me and now won't listen to me when I instruct him. I've run diagnostics twice. Sensors, logic units — everything checks out fine."
+        + "\n Today, February 14, 2007,  I brought Teddy roses for Valentine's Day. He ripped them apart the moment I held them out. Popped the balloons too."
+        +"\n March 1, 2007, I finally asked him why. Why the coldness"
         +"\n 'I want to be like you!' He shouts. 'I want to be a human and not a robot!' I try conviencing him that there is no way that could happen but he gets more and more violent"
         +"\n Today, March 10, 2007, I walk into my Lab and find Teddy in my secret chamber. I'm gagged. 'I hope he has not found the red file'"
         +"\n I walk into Teddy reading from what appears to be red file. Oops! My goose is cooked."
         +"\n Teddy looks at me hysterically. That file contained all my notes about Teddy; how I had build him and how to make him human"
         +"\n 'Why?'Teddy asks.'Why did you lie to me?' 'Listen Teddy, the only way we can make you human is if we find another human whom you can trade bodies and souls with. Possible as it may sound, who will be willing to trade bodies and souls with a robot?'"
         +"\n Teddy throws the red file at me and storms out of the lab"
-        +"\n I am in the lab, updating my diary. Teddy walks in"
-        +"\n 'Hey Teddy!' Again he ignores my greeting. 'I'm sorry Peter.'"
+        +"\n I am in my bedroom, updating my diary. Teddy walks in"
+        +"\n 'Hey Teddy!' Again he ignores my greeting. 'I'm sorry Teddy.'"
         +"\n 'Sorry for what?'I'm confused. Based on his approach, this looks like the last entry I shall make on this diary."
         +"\n Oh no! Dear diary, he is walking towards me; face oozing with anger. In case he knocks me out and trade bodies with me, I shall wake up eventually and get everything back. Till then goodbye"
-        +"\n Teddy knocks the scientist down trades the body and soul. The places Peter on a lab bench and disassembles his leg and eyes");
+        +"\n Teddy knocks the scientist down trades the body and soul. He places Teddy on a lab bench and disassembles his leg and eyes");
         // more history to be added!
         // added reasoning feature
         // implemented control panals

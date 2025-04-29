@@ -11,7 +11,7 @@
 
 ## Design Justification 🚧
 **TO BE ADDED**
-
+Our game is basically about this Scientist who created a robot and in pursuit of having a best friend. The setting involves two rooms; a bedroom and a laboratory. This
 ## Layout Map 🚧
 **TO BE ADDED**
 
@@ -19,8 +19,8 @@
  1. Our **overall approach** to tackling this project is coming up with a game plot first, then write the possible classes we need and their possible interations. After finishing the draft of the classes, we implement them in `Main.java` and write the game loop. 🕹️
  2. We definitely learned so much **new thing(s)** in completing this project: 🤩
     * We learned about contructing an architecture diagram;
-    * We lerned about working how to effectively use Github for team projects;
-    * We leanred about how to implement a game loop;
+    * We learned about working how to effectively use Github for team projects;
+    * We learned about how to implement a game loop;
  3. However, there are still many things we wish we had **implemented differently**: 👾
     * We wish we had implemented a `Soul` class and it would be an adventure of collecting the scattered souls along the way;
     * We wish we had implemented a puzzle that players need to solve before they are able to unlock the computer;
