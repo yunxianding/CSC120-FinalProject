@@ -28,4 +28,13 @@ public class Human extends Existence {
         this.canInspect = true;
         this.isUnconscious = false;
     }
+
+    /**
+     * start the self-destruct program of the robot
+     * @param r the robot body to destroy
+     */
+    public void selfDestruct(Robot r) {
+        System.out.println("\nSelf-destruct sequence initiated! Boom!");
+        r.die();
+    }
 }
