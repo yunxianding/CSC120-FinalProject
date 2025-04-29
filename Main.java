@@ -44,7 +44,7 @@ public class Main {
         String basicInstructions = 
                         "\n Here is the basic instruction: Type the command with any item to execute that command on that item." +
                         "(E.g: 'open door')" +
-                        "\n Type 'help' to see available commands at current stage, 'exit' to exit the game.";
+                        "\n Type 'help' to see available commands at current stage, 'exit' to exit the game at any point.";
         String enteringMessage = 
                         "\n Now get ready for the game..." +
                         "\n......LOADING......" +
