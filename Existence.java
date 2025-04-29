@@ -121,11 +121,17 @@ public class Existence {
         if (s.canBeOpened == true) {
             System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
         } else {
-            // To be constructed! A few scenorios:
-            // 1. try to open an item that can't be opened
-            // 2. try to open an item that has already been opened
-            // 3. try to open an item when we are not near it's location
-            // Some more?
+        }
+    }
+    
+    /**
+     * Overloaded open method for opening a door leading to a room
+     * @param the door to be opened
+     * @param the room the door is leading to
+     */
+    public void open(Item s, Room r) {
+        if (s.canBeOpened == true) {
+            System.out.println("You opened the " + s + " leading to the " + r + ".");
         }
     }
 
@@ -234,8 +240,9 @@ public class Existence {
      * Print the ArrayList of player's inventory.
      */
     public void printInventory() {
-        System.out.println("Your inventory contains:");
+        System.out.println("Your inventory currently contains:");
         System.out.println(this.inventory.toString());
+        // This method needs to be modified! It's not printing properly!
     }
 
     /**
@@ -255,11 +262,11 @@ public class Existence {
         if (r == null) {
         System.out.println("You're not in a room.");
 
-        } System.out.println("You look around the: " + r.getName() + r.getDescription());
+        } System.out.println("You look around the " + r.getName() + ". "+ r.getDescription());
     }
 
     /**
-     * Inspect an item, see its description and the status of whether it can be grabbed
+     * Inspect an item, see its status
      * @param s the item to be inspected
      */
     public void inspect(Item s) {
@@ -268,7 +275,7 @@ public class Existence {
         }
     
         System.out.println("Inspecting the " + s.getName() + "...");
-        System.out.println("Description: " + s.getDescription() + s.getItemStatus());
+        System.out.println(s.getItemStatus());
     }
     
     /**
