@@ -9,11 +9,11 @@ import java.util.List;
 public class Room {
     
     // Attributes
-    private String name = "<Name Unknown>";
-    private String description = "<Description Unknown>";
+    public String name = "<Name Unknown>";
+    public String description = "<Description Unknown>";
     public Boolean laserEquipped;
     public Boolean laserActive;
-    private List<Item> items;
+    public List<Item> itemsInRoom;
 
     /* Default Constructor */
     public Room(String name, String description, Boolean laserEquipped, Boolean laserActive){
@@ -25,23 +25,7 @@ public class Room {
         }
         this.laserEquipped = laserEquipped;
         this.laserActive = laserActive;
-        this.items = new ArrayList<>();
-    }
-
-    /**
-     * Accessor for the name of the room
-     * @return name of the room
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Accessor for the description of the room
-     * @return description of the room
-     */
-    public String getDescription(){
-        return this.description;
+        this.itemsInRoom = new ArrayList<>();
     }
 
     /**
@@ -49,7 +33,7 @@ public class Room {
      */
     public void addItem(Item item) {
         if (item != null) {
-            items.add(item);
+            itemsInRoom.add(item);
         }
     }
 
@@ -58,14 +42,7 @@ public class Room {
      */
     public void removeItem(Item item) {
         if (item != null) {
-            items.remove(item);
+            itemsInRoom.remove(item);
         }
-    }
-
-    /**
-     * Accessor for the items arraylist
-     */
-    public List<Item> getItems() {
-        return items;
     }
 }
