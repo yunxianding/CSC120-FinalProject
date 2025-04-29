@@ -125,9 +125,7 @@ public class Main {
                         player.lookAround(bedroom);
                     } else if (player.stageTwo == true || player.stageThree == true) {
                         player.lookAround(lab);
-                    } else {
-                        System.out.println("INVALID COMMAND");
-                    }
+                    } 
                 } 
 
                 // If the command is take, look for the next word to see what item to pick
@@ -145,12 +143,14 @@ public class Main {
                         } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
                             player.take(teddyBear);
                         } else {
-                            System.out.println("INVALID COMMAND");
+                            System.out.println("[INVALID COMMAND]");
                         }
-                    } 
+                    } else {
+                        System.out.println("What do you want to take?");
+                    }
                 }
 
-                // If the command is touch, We let the player touch the item and return its description
+                // If the command is touch, we let the player touch the item and return its description
                 if (command.equalsIgnoreCase("touch")) {
                     if (words.length >= 2) {
                         String itemName = words[1]; // The second word is the item's name
@@ -171,12 +171,14 @@ public class Main {
                         } else if (itemName.equalsIgnoreCase("door")) {
                             player.touch(door);
                         } else {
-                            System.out.println("INVALID COMMAND");
+                            System.out.println("[INVALID COMMAND]");
                         }
-                    } 
+                    } else {
+                        System.out.println("What do you want to touch?");
+                    }
                 }
 
-                // If the command is inspect, We let the player inspect the item and return its description and status
+                // If the command is inspect, we let the player inspect the item and return its description and status
                 if (command.equalsIgnoreCase("inspect")) {
                     if (words.length >= 2) {
                         String itemName = words[1]; // The second word is the item's name
@@ -199,15 +201,60 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("door")) {
                                 player.inspect(door);
                             } else {
-                            System.out.println("INVALID COMMAND");
+                                System.out.println("[INVALID COMMAND]");
                             }
-                        } else {
+                        } else if (player.canInspect == false) {
                             System.out.println("You cannot inspect with one one eye missing!");
                         }
                     } 
+                    else {
+                        System.out.println("What do you want to inspect?");
+                    }
                 } 
 
-                // crawl to
+                // If the command is crawl to, we let the player crawl to an item
+                if (command.equalsIgnoreCase("crawl")) {
+                    if (words.length >= 2) {
+                        String itemName = words[2]; // The third word is the item's name
+                    
+                        // The player can crawl to these fixed items: 
+                        // bedroom: (bed, box, iris pot, door), lab: (computer)
+                        if (itemName.equalsIgnoreCase("bed")) {
+                            player.crawlTo(bedroom, bed);
+                        }  else if (itemName.equalsIgnoreCase("box")) {
+                            player.crawlTo(bedroom, box);
+                        } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                            player.crawlTo(bedroom, irisPot);
+                        } else if (itemName.equalsIgnoreCase("door")) {
+                            player.crawlTo(bedroom, door);
+                        } else if (itemName.equalsIgnoreCase("computer")) {
+                            player.crawlTo(lab, computer);
+                        }
+                        
+                        // The player can crawl to these transportable items:
+                        // teddy bear
+                        // The player can't crawl to leg and eye because they are stored inside another item
+                        else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
+                            if (player.stageOne == true) {
+                                player.crawlTo(bedroom, teddyBear);
+                            } else if (player.stageTwo == true || player.stageThree == true) {
+                                if (bedroom.itemsInRoom.contains(teddyBear)) {
+                                    player.crawlTo(bedroom, teddyBear);
+                                } else if (lab.itemsInRoom.contains(teddyBear)) {
+                                    player.crawlTo(lab, teddyBear);
+                                } 
+                            }   
+                        }
+
+                        // If the third word is none of the names of the items, we print out "[INVALID COMMAND]"
+                        else {
+                            System.out.println("[INVALID COMMAND]");
+                        }
+                        
+                    } else {
+                        System.out.println("What do you want to crawl to?");
+                    }
+                }
 
                 // walk to
 
