@@ -120,7 +120,6 @@ public class Existence {
     public void open(Item s) {
         if (s.canBeOpened == true) {
             System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
-        } else {
         }
     }
     
