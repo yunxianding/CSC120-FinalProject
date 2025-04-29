@@ -228,7 +228,7 @@ public class Existence {
     public void putDown(Item s, Room r) {
         if (this.inventory.contains(s) && r != null) {
             this.inventory.remove(s);
-            System.out.println("You put down the " + s.getName() + " in the " + r.getName() + ".");
+            System.out.println("You put down the " + s.getName() + " in the " + r.name + ".");
         } // This method need to be modified.
           // We need to figure out how to how to represent the current room we are in
           // If we want to put down the item in the current room, we will successfully do that
@@ -261,7 +261,7 @@ public class Existence {
         if (r == null) {
         System.out.println("You're not in a room.");
 
-        } System.out.println("You look around the " + r.getName() + ". "+ r.getDescription());
+        } System.out.println("You look around the " + r.name + ". "+ r.description);
     }
 
     /**
@@ -282,18 +282,11 @@ public class Existence {
      * @param r the room to walk to
      * @param s the item to walk to
      */
-    public void walkTo(Room r, Item s) {
+    public void walkTo(Room rm, Item s) {
         if (this.canWalk = true) {
-            System.out.println("You can walk to these items in the current room" + r.getItems());
-            if (r == null || s == null) {
-                System.out.println("There is nowhere to walk to.");
-            } else if (!r.getItems().contains(s)) {
-                System.out.println("You can't walk to the " + s.getName() + " because it's not in this room.");
-            } else {
                 System.out.println(" You walked to " + s.getName() + ".");
                 System.out.println("... Walking ...");
                 System.out.println("You are now near the " + s.getName() + ".");
-            }
         } else {
             System.out.println("You don't have both legs yet. You can only crawl to somewhere.");
         }
@@ -304,9 +297,9 @@ public class Existence {
      * @param r the room to crawl to
      * @param s the item to crawl to
      */
-    public void crawlTo(Room r, Item s) {
-        if (r.getItems().contains(s)) {
-            System.out.println("You crawled slowly toward the " + s.getName() + ".");
+    public void crawlTo(Room rm, Item s) {
+        if (rm.itemsInRoom.contains(s)) {
+            System.out.println("You crawled slowly toward the " + s.getName() + "in the " + rm.name + ".");
             System.out.println("....... Crawling ...... \n ...... Crawling ......");
             System.out.println("..... Almost there ......");
             System.out.println("You reached the " + s.getName() + ", catching your breath.");
