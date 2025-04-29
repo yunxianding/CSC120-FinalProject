@@ -43,7 +43,7 @@ public class Item {
      * @return the statusof the item
      */
     public String getItemStatus() {
-        return ("Item status for " + this.getName() +
+        return ("\n Item status for " + this.getName() +
                 "\n can be grabbed: " + this.canBeGrabbed +
                 "\n can be opened: " + this.canBeOpened +
                 "\n can be put on: " + this.canBePutOn);
