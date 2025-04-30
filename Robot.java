@@ -7,9 +7,7 @@ public class Robot extends Existence {
 
     //Attributes
     public Boolean poweredOn;
-    public Boolean reasoningOn;
-    public Boolean memoryOn;
-
+    
     /**
      * Default constructor for 'Human'
      * @param name
@@ -25,8 +23,6 @@ public class Robot extends Existence {
         this.canWalk = false; // Will unlock after adding leg to the body
         this.canInspect = true; // Will unlock after adding eye to the body
         this.poweredOn = true; // Will be able to turn off after unlocking the control panel
-        this.reasoningOn = false; // Will be able to turn on after unlocking the control panel
-        this.memoryOn = false; // Will be able to turn on after unlocking the control panel
     }
     
     // Methods
@@ -36,10 +32,10 @@ public class Robot extends Existence {
      */
     public void putOn(Item s) {
         if (this.inventory.contains(s) && s.canBePutOn == true) {
-            System.out.println("You have put on " + s.getName() + ".");
+            System.out.println("You have put on " + s.name + ".");
             this.inventory.remove(s);
         } else {
-            System.out.println("INVALID COMMAND");
+            System.out.println("[INVALID COMMAND]");
         }
     }
 
@@ -48,6 +44,6 @@ public class Robot extends Existence {
      */
     public void electrocute(Human h) {
         h.isUnconscious = true;
-        System.out.println(h.getName() + " is temporarily unconscious.");
+        System.out.println("You electrocuted " + h.name + " and they temporarily fall unconscious.");
     }
 }
