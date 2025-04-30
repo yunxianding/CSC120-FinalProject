@@ -15,7 +15,13 @@ public class Room {
     public Boolean laserActive;
     public List<Item> itemsInRoom;
 
-    /* Default Constructor */
+    /**
+     * Default Constructor
+     * @param name of the room
+     * @param description of the room
+     * @param boolean of whether it's laser equipped
+     * @param boolean of whether it's laser active
+     */
     public Room(String name, String description, Boolean laserEquipped, Boolean laserActive){
         if (name != null){
             this.name = name;
@@ -30,6 +36,7 @@ public class Room {
 
     /**
      * Add an item to the items arraylist
+     * @param item to be added 
      */
     public void addItem(Item item) {
         if (item != null) {
@@ -39,6 +46,7 @@ public class Room {
 
     /**
      * Remove an item from the items arraylist
+     * @param ietm to be removed
      */
     public void removeItem(Item item) {
         if (item != null) {
