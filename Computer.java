@@ -54,10 +54,8 @@ public class Computer extends Item {
     */
     public void openControlPanel(Robot r, Room rm) {
         System.out.println("\n=== Control Panel ===");
-        System.out.println("power: " + "On/Off"+ "\nCurrent state: PoweredOn?" + r.poweredOn);
-        System.out.println("laser: " + "On/Off"+ "\nCurrent room: "+ rm.name + "\nCurrent state: LaserOn?" + rm.laserActive);
-        System.out.println("trade body: " + "RESTRICTED");
-        System.out.println("self destruct: " + "RESTRICTED");
+        System.out.println("power: " + "On/Off"+ " current state: Powered On? " + r.poweredOn);
+        System.out.println("laser: " + "On/Off"+ " current room: "+ rm.name + " current state: Laser On" + rm.laserActive);
         System.out.println("Toggle the buttons to change states");
     }
 
