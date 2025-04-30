@@ -7,7 +7,7 @@ public class Existence {
 
     // Attributes
     public String name;
-    public Room currentRoom; // To be discussed! Do we need this?
+    public Room currentRoom; 
     // Should we also have an attribute for currentLocation? Like near some item?
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
@@ -45,19 +45,11 @@ public class Existence {
     // Methods
 
     /**
-     * Accessor for an exsitence's name
-     * @return name of the existence
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
      * Accessor for one's health bar
      * @return Current health bar number
      */
-    public int getHealth() {
-        return this.health;
+    public String getHealth() {
+        return ("Your current health is: " + this.health + " /100");
     }
 
     /**
@@ -74,7 +66,6 @@ public class Existence {
     public void die() {
         this.health = 0;
         this.isAlive = false;
-        System.out.println("You have died.");
         respawnChat();
     }
 
@@ -119,7 +110,7 @@ public class Existence {
      */
     public void open(Item s) {
         if (s.canBeOpened == true) {
-            System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
+            System.out.println("You have opened " + s.name + ". Inside it is a " + s.getContainedItem().name + ".");
         }
     }
     
@@ -130,71 +121,18 @@ public class Existence {
      */
     public void open(Item s, Room r) {
         if (s.canBeOpened == true) {
-            System.out.println("You opened the " + s + " leading to the " + r + ".");
+            System.out.println("You opened the " + s.name + " leading to the " + r.name + ".");
         }
     }
 
     /**
      * Overloaded open method for a computer
-     * @param r The robot controlled on the computer
      * @param computer to be opened
-     * @param rm The room controlled on the computer
      */
-    public void open(Robot r, Computer c, Room rm) {
-        if (c.locked == true) {
-            c.locked = false;
-            System.out.println("\nYou opened the computer. Two folders appear: History and Control Panel.");
-
-            // Get user input
-            Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Which folder do you want to see? Press H to open History folder and C to open Control Panel.");
-            
-            String choice2 = scanner2.nextLine();
-
-            if (choice2.equals("H")) {
-                System.out.println("You opened the History Folder...");
-                c.openHistory();
-            } else if (choice2.equals("C")) {
-                System.out.println("You opened the control Panel...");
-                c.openControlPanel(r,rm);
-                System.out.println("Do you want to toggle any controls? Enter a shorcut to toggle something... +");
-                System.out.println("Control Panel Shortcuts:\n" + 
-                                        "\n" + 
-                                        "- \"r\" for reasoning.\n" + 
-                                        "- \"p\" for power.\n" + 
-                                        "- \"m\" for memory.\n" + 
-                                        "- \"l\" for laser.\n" + 
-                                        "- \"tr\" to trade bodies.\n" + 
-                                        "- \"de\" to destruct an *entity*\n" +
-                                        "");
-                 
-                // Getting commands
-                Scanner scanner3 = new Scanner(System.in);
-
-                String choice3 = scanner3.nextLine();
-
-                if (choice3.equals("r")) {
-                    c.toggleReasoning(r);
-
-                } else if (choice3.equals("p")) {
-                    c.togglePower(r);
-
-                } else if (choice3.equals("m")) {
-                    c.toggleMemory(r);
-
-                } else if (choice3.equals("l")) {
-                    c.toggleLaser(rm);
-                } else if (choice3.equals("tr") || choice3.equals("de")) {
-                    System.out.println("\n[RESTRICTED ACTION FAILED]");
-                } else {
-                    System.out.println("[INVALID COMMAND]");
-                } scanner3.close(); 
-            } else {
-                System.out.println("[INVALID COMMAND]");
-            } scanner2.close();
-        } else {
-            System.out.println("\nThe computer is unlocked and opened.");
-        } //Much to do with this overloaded method!!
+    public void open(Computer c) {
+        c.locked =false;
+       System.out.println("You opened the computer and two folders appear: History and Control Panel." + 
+       "\n 'I want to try opening one of the folders...'");
     }
 
     
@@ -204,7 +142,7 @@ public class Existence {
      * @param s The item
      */
     public void touch(Item s) {
-        System.out.println(s.getDescription());
+        System.out.println(s.description);
     }
 
     /**
@@ -213,10 +151,13 @@ public class Existence {
      */
     public void take(Item s) {
         if(this.inventory.contains(s)) {
-            System.out.println("You already have " + s.getName() + ".");
+            System.out.println("You already have " + s.name + ".");
         } else {
             this.inventory.add(s);
-            System.out.println(s.getName() + " successfully added to your inventory!");
+            System.out.println(s.name + " successfully added to your inventory!");
+            if (s.canBePutOn == true) {
+                System.out.println(s.description);
+            }
         }
     }   
 
@@ -225,14 +166,14 @@ public class Existence {
      * @param s the item
      * @param r the room
      */
-    public void putDown(Item s, Room r) {
-        if (this.inventory.contains(s) && r != null) {
+    public void putDown(Item s) {
+        if (this.inventory.contains(s) && s.canBeGrabbed == true) {
             this.inventory.remove(s);
-            System.out.println("You put down the " + s.getName() + " in the " + r.getName() + ".");
-        } // This method need to be modified.
-          // We need to figure out how to how to represent the current room we are in
-          // If we want to put down the item in the current room, we will successfully do that
-          // If we want to put down the item in another room, we need to walk to/crawl to that room first
+            this.currentRoom.itemsInRoom.add(s);
+            System.out.println("You put down the " + s.name + " in the " + this.currentRoom + ".");
+        } else {
+            System.out.println("[INVALID COMMAND]");
+        }
     }
 
     /**
@@ -250,7 +191,8 @@ public class Existence {
      */
     public void fight(Existence e) {
         this.weaken();
-        System.out.println("Fighting!!!");
+        e.weaken();
+        System.out.println("Fighting!!!" + this.getHealth());
     }
 
     /**
@@ -261,7 +203,7 @@ public class Existence {
         if (r == null) {
         System.out.println("You're not in a room.");
 
-        } System.out.println("You look around the " + r.getName() + ". "+ r.getDescription());
+        } System.out.println("You look around the " + r.name + ". "+ r.description);
     }
 
     /**
@@ -273,7 +215,7 @@ public class Existence {
             System.out.println("There is nothing to inspect.");
         }
     
-        System.out.println("Inspecting the " + s.getName() + "...");
+        System.out.println("Inspecting the " + s.name + "...");
         System.out.println(s.getItemStatus());
     }
     
@@ -282,18 +224,11 @@ public class Existence {
      * @param r the room to walk to
      * @param s the item to walk to
      */
-    public void walkTo(Room r, Item s) {
+    public void walkTo(Room rm, Item s) {
         if (this.canWalk = true) {
-            System.out.println("You can walk to these items in the current room" + r.getItems());
-            if (r == null || s == null) {
-                System.out.println("There is nowhere to walk to.");
-            } else if (!r.getItems().contains(s)) {
-                System.out.println("You can't walk to the " + s.getName() + " because it's not in this room.");
-            } else {
-                System.out.println(" You walked to " + s.getName() + ".");
+                System.out.println(" You walked to " + s.name + ".");
                 System.out.println("... Walking ...");
-                System.out.println("You are now near the " + s.getName() + ".");
-            }
+                System.out.println("You are now near the " + s.name + ".");
         } else {
             System.out.println("You don't have both legs yet. You can only crawl to somewhere.");
         }
@@ -304,16 +239,29 @@ public class Existence {
      * @param r the room to crawl to
      * @param s the item to crawl to
      */
-    public void crawlTo(Room r, Item s) {
-        if (r.getItems().contains(s)) {
-            System.out.println("You crawled slowly toward the " + s.getName() + ".");
+    public void crawlTo(Room rm, Item s) {
+        if (rm.itemsInRoom.contains(s)) {
+            System.out.println("You crawled slowly toward the " + s.name + "in the " + rm.name + ".");
             System.out.println("....... Crawling ...... \n ...... Crawling ......");
             System.out.println("..... Almost there ......");
-            System.out.println("You reached the " + s.getName() + ", catching your breath.");
-            System.out.println("You are now near the " + s.getName() + ".");
+            System.out.println("You reached the " + s.name + ", catching your breath.");
+            System.out.println("You are now near the " + s.name + ".");
         } else {
-            System.out.println("You can't crawl to the " + s.getName() + " because it's not in this room.");
+            System.out.println("You can't crawl to the " + s.name + " because it's not in this room.");
         }
+    }
+
+    /**
+     * trade bodies between robot and human
+     * @param r robot
+     * @param h human
+     */
+    public void tradeBody(Robot r, Human h) {
+        System.out.println("\n Detecting surrounding existences......" +
+        "\n There are currently two existence: Robot " + r.name + " and Human" + h.name + " ." +
+        "\n -------------------------Trading Body-------------------------" +
+        "\n Robot" + r.name + " has successfully traded body with human " + h.name + " ."
+        );
     }
 
 }
