@@ -110,7 +110,7 @@ public class Existence {
      */
     public void open(Item s) {
         if (s.canBeOpened == true) {
-            System.out.println("You have opened " + s + ". Inside it is " + s.getContainedItem() + " .");
+            System.out.println("You have opened " + s.name + ". Inside it is a " + s.getContainedItem().name + ".");
         }
     }
     
@@ -121,7 +121,7 @@ public class Existence {
      */
     public void open(Item s, Room r) {
         if (s.canBeOpened == true) {
-            System.out.println("You opened the " + s + " leading to the " + r + ".");
+            System.out.println("You opened the " + s.name + " leading to the " + r.name + ".");
         }
     }
 
@@ -260,7 +260,7 @@ public class Existence {
         System.out.println("\n Detecting surrounding existences......" +
         "\n There are currently two existence: Robot " + r.name + " and Human" + h.name + " ." +
         "\n -------------------------Trading Body-------------------------" +
-        "\n Robo t" + r.name + " has successfully traded body with human " + h.name + " ."
+        "\n Robot" + r.name + " has successfully traded body with human " + h.name + " ."
         );
     }
 
