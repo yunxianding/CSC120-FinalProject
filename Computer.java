@@ -86,4 +86,5 @@ public class Computer extends Item {
             System.out.println("\n[ACTION FAILED]-ROOM NOT EQUIPPED WITH LASER");
         }
     }
+}
 

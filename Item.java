@@ -18,13 +18,21 @@ public class Item {
         this.description = description;
         this.canBeGrabbed = canBeGrabbed;
         this.containedItem = null;
-        this.canBeOpened = false;
-        this.canBePutOn = false;
+        this.canBeOpened = canBeOpened;
+        this.canBePutOn = canBePutOn;
+    }
+
+    /**
+     * toString for Item's name
+     * @return Item's name
+     */
+    public String toString(){
+        return this.name;
     }
 
     /**
      * Accessor for item's status(whether it can be grabbed/opened/put on)
-     * @return the statusof the item
+     * @return the statussof the item
      */
     public String getItemStatus() {
         return ("\n Item status for " + this.name +

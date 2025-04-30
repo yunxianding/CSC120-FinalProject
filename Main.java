@@ -23,7 +23,7 @@ public class Main {
         Item bed = new Item("bed", "'This is a bed.'", false, false, false);
         Item teddyBear = new Item("teddyBear", "'This teddy bear feels soft.'", true, false, false);
         Item box = new Item("box", "'This is a box. There is a leg inside.'", false, true, false);
-        Item leg = new Item("leg", "'This looks like my leg. I'd better put it on to walk.'", true, false, true);
+        Item leg = new Item("leg", "This looks like my leg. I'd better put it on to walk.", true, true, true);
         Item irisPot = new Item("irisPot", "'There is a label on the plantpot saying 'iris pot'. There is an eye inside.'", false, true, false);
         Item eye = new Item("eye", "'This looks like my eye. I'd better put it on for better vision.'", true, false, true);
         Item door = new Item("door", "'This is a door connecting bedroom to another room. I wonder where is it leading to...'", false, true, false);
@@ -134,7 +134,8 @@ public class Main {
                     // Let the player exit at any point in the game
                     case "exit":
                         System.out.println("Goodbye! We hope you enjoyed the game!");
-                        gameOn = false; // Change game state to break out the user input loop (because the game ended)
+                        // Change game state to break out the user input loop (because the game ended)
+                        gameOn = false; 
                         break;
                     
                     // Print current health
@@ -158,7 +159,7 @@ public class Main {
                         }
                         break;
 
-                    // fight the scientist (body occupied by the initial robot)
+                    // Fight the scientist (body occupied by the initial robot)
                     case "fight": 
                         player.fight(scientist);
                         break;
@@ -194,7 +195,8 @@ public class Main {
                     // Touch things to get their descriptions
                     case "touch":
                         if (words.length >= 2) {
-                            String itemName = words[1]; // The second word is the item's name
+                            // The second word is the item's name
+                            String itemName = words[1]; 
                         
                             // The player can touch: bed, teddy bear, box, leg, iris pot, eye, door and computer
                             if (itemName.equalsIgnoreCase("bed")) {
@@ -217,6 +219,7 @@ public class Main {
                                 System.out.println("[INVALID COMMAND]");
                             } 
                         } else {
+                            // There is only one word
                             System.out.println("What do you want to touch?");
                         }
                         break;
@@ -388,7 +391,7 @@ public class Main {
                                 }
 
                             } else if (player.canWalk == false) {
-                                System.out.println("You cannot walk with one one leg missing!");
+                                System.out.println("You cannot walk with one one leg missing! Try crawling instead.");
                             } 
                         } else {
                             System.out.println("What do you want to walk to?");
@@ -398,29 +401,30 @@ public class Main {
                     // put on an item or put down an item
                     case "put":
                         if (words.length > 2) {
-                            String preposition = words[1]; // The second word is the preposition: on/down
-                            String itemName = words[2]; // The third word is the item's name
+                            String preposition = words[1].toLowerCase(); // The second word is the preposition: on/down
+                            String itemName = words[2].toLowerCase(); // The third word is the item's name
+                            System.out.println("Item name: " + itemName);
                             
                             // If the preposition is on, we perform `putOn` 
-                            if (preposition.equalsIgnoreCase("on")) {
+                            if (preposition.equals("on")) {
 
                                 // The player can put on these fixed items: 
                                 // leg and eye
-                                if (itemName.equalsIgnoreCase("leg")) {
+                                if (itemName.equals("leg")) {
                                     player.putOn(leg);
                                     player.canWalk = true; // The player can walk after putting on the leg
-                                    task1 = true; // [Task 1] completed
-                                } else if (itemName.equalsIgnoreCase("eye")) {
+                                    task1 = true; // [Task 1] 
+                                } else if (itemName.equals("eye")) {
                                     player.putOn(eye);
                                     player.canInspect = true; // The player can inspect after putting on the eye
                                     task2 = true; // [Task 2] completed
                                 } else {
-                                    System.out.println("[INVALID COMMAND]");
+                                    System.out.println("You cannot put on " + itemName);
                                 }
                             }
 
                             // If the preposition is down, we perform `putDown`
-                            if (preposition.equalsIgnoreCase("down")) {
+                            else if (preposition.equalsIgnoreCase("down")) {
 
                                 // The player can put down these transportable items:
                                 // leg, eye, teddy bear
@@ -433,13 +437,13 @@ public class Main {
                                         player.putDown(eye);
                                         player.canInspect = false;
                                 } else {
-                                    System.out.println("[INVALID COMMAND]");
+                                    System.out.println("You cannot put down" + itemName);
                                 }
                             }
 
                             // If the preposition is neither on or down, we print out "[INVALID COMMAND]"
                             else {
-                                    System.out.println("[INVALID COMMAND]");
+                                    System.out.println("You can only 'put on' or 'put down'");
                             }
 
                         } else {

@@ -182,7 +182,6 @@ public class Existence {
     public void printInventory() {
         System.out.println("Your inventory currently contains:");
         System.out.println(this.inventory.toString());
-        // This method needs to be modified! It's not printing properly!
     }
 
     /**
@@ -241,7 +240,7 @@ public class Existence {
      */
     public void crawlTo(Room rm, Item s) {
         if (rm.itemsInRoom.contains(s)) {
-            System.out.println("You crawled slowly toward the " + s.name + "in the " + rm.name + ".");
+            System.out.println("You crawled slowly toward the " + s.name + " in the " + rm.name + ".");
             System.out.println("....... Crawling ...... \n ...... Crawling ......");
             System.out.println("..... Almost there ......");
             System.out.println("You reached the " + s.name + ", catching your breath.");
