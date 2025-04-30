@@ -29,7 +29,7 @@ public class Main {
         Item door = new Item("door", "'This is a door connecting bedroom to another room. I wonder where is it leading to...'", false, true, false);
 
         //Create the Bedroom
-        Room bedroom = new Room("Bedroom", "'This is a bedroom. I can see a bed and a teddy bear.'", false, false);
+        Room bedroom = new Room("Bedroom", "'This is a bedroom. I can see a bed, a teddy bear and a box.'", false, false);
         bedroom.addItem(bed);
         bedroom.addItem(teddyBear);
         bedroom.addItem(box);
@@ -139,7 +139,7 @@ public class Main {
                     
                     // Print current health
                     case "health":
-                        player.getHealth();
+                        System.out.println(player.getHealth());
                         break;
 
                     // Print inventory
