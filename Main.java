@@ -403,7 +403,6 @@ public class Main {
                         if (words.length > 2) {
                             String preposition = words[1].toLowerCase(); // The second word is the preposition: on/down
                             String itemName = words[2].toLowerCase(); // The third word is the item's name
-                            System.out.println("Item name: " + itemName);
                             
                             // If the preposition is on, we perform `putOn` 
                             if (preposition.equals("on")) {
