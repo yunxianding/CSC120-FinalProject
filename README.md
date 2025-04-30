@@ -1,5 +1,5 @@
-# CSC120-FinalProject-ROBO Adventure🤖
-# Contributors: Clare, Joyce, Tammy, Yunxian
+# CSC120-FinalProject-Teddy Bot🤖
+## Contributors: Clare, Joyce, Tammy, Yunxian
 
 ## Deliverables CheckList: 🚧(in construction) ☑️(finished)
  - Your final codebase 🚧
@@ -28,7 +28,8 @@
  4. If we had **unlimited time**, we would implement these additional features: 🧸
     * Add more rooms so that it will be a longer adventure;
     * Make more commands available;
- 5. The most helpful **piece of feedback** we received while working on our project was **TO BE ADDED** given by **TO BE ADDED**. 🚧
+ 5. The most helpful **piece of feedback** we received: 🚧
+    * "Yunxian":  The most useful feedback I got is from Tammy. She told me we can use `switch-case` instead of many `if-else`statements in the main game loop. 
  6. If we could go back in time and give our past selves some **advice** about this project, we would give these tips: 😃
     * Start Small! We came up with so many good ideas but it's hard to implement all of them into our game, so we are abandoing ideas along the way. It could be frustrated if we have a very complicated storyline in our mind but we can't bring them to real life due to limited time.
     * Take advantage of github! Some features like opening an issue and assign people to work on it/ work on separate branches and merge later/reviewing each other's commit messages could be really useful working in a team!
