@@ -17,7 +17,7 @@ public class Computer extends Item {
         this.locked = true;
     }
  
-    /** Prints the history. Not completed */
+    /** Prints the history*/
     public void openHistory() {
         System.out.println("\n=== History ===");
         System.out.println( "\n This is robotics scientist Teddy. Today is March 13, 2005, and I'm starting on building the first Teddy robot prototype." 
@@ -48,15 +48,31 @@ public class Computer extends Item {
         + "I powered off robot Teddy, disassembled his robot leg and eye and put him in the bedroom.");
     }
 
+    /** 
+     * Close the history folder
+     * @return String of closed information
+     */
+    public String closeHistory() {
+        return("You have closed the History folder.");
+    }
+
     /** Displays the control panel with current switch states. 
      * @param r The robot whose controls are being toggled
      * @param rm The room where the lasers are
     */
     public void openControlPanel(Robot r, Room rm) {
         System.out.println("\n=== Control Panel ===");
-        System.out.println("power: " + "On/Off"+ " current state: Powered On? " + r.poweredOn);
-        System.out.println("laser: " + "On/Off"+ " current room: "+ rm.name + " current state: Laser On" + rm.laserActive);
+        System.out.println("power control button for robot teddy: " + "On/Off"+ " current state: Powered On? " + r.poweredOn);
+        System.out.println("laser control button for lab: " + "On/Off"+ " current state: Laser On?" + rm.laserActive);
         System.out.println("Toggle the buttons to change states");
+    }
+
+    /** 
+     * Close the controls folder
+     * @return String of closed information
+     */
+    public String closeControlPanel() {
+        return("You have closed the controls folder.");
     }
 
     /** Attempts to toggle power off/on
@@ -78,10 +94,10 @@ public class Computer extends Item {
     public void toggleLaser(Room r) {
         if (r.laserEquipped == true && r.laserActive == true) {
             r.laserActive = false;
-            System.out.println("\n[LASER OFF]");
+            System.out.println("\n[LASER OFF] Lab is now free of lasers and safe to walk to other rooms.");
         } else if (r.laserEquipped == true && r.laserActive == false){
             r.laserActive = true;
-            System.out.println("\n[LASER ON]");
+            System.out.println("\n[LASER ON] Lab is now on with lasers and dangerous to walk around.");
         } else {
             System.out.println("\n[ACTION FAILED]-ROOM NOT EQUIPPED WITH LASER");
         }
