@@ -37,8 +37,8 @@
 ## Endings
 **Ending 1**---[Ignorance of laser];
 
-**Ending 1**---[I'd rather sleep];
+**Ending 2**---[I'd rather sleep];
 
-**Ending 1**---[Strength of human];
+**Ending 3**---[Strength of human];
 
-**Ending 1**---[Heart of human];
+**Ending 4**---[Heart of human];
