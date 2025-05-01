@@ -1,6 +1,6 @@
 # SPOILER ALERT
 
-## Commands available **TO BE UPDATED**
+## Commands available 
 * `take item` to take something and add it to your inventory;
 * `touch item` to touch an item and see its description;
 * `inventory` to see your inventory; 
@@ -18,20 +18,27 @@
 * `fight` to fight another existence;
 
 ## Tasks
-## Stage 1
+**Stage 1**
 - [Task 1] Put on the leg hidden in a box;
 - [Task 2] Stand up, find and put on the eye in an irisPot;
 - [Task 3] Look around, open the door to the lab;
-## Stage 2
+
+**Stage 2**
 - [Task 4] Crawl into the lab;
 - [Task 5] Open the computer and see 2 folders;
 - [Task 6] Open the history folder, find the story;
 - [Task 7] Open the controls folder and turn off the laser;
-## Stage 3
+
+**Stage 3**
 - [Task 8] Electrocute the scientist;
 - [Task 9] Trade bodies;
 - [Task 10] Choose to forgive or revenge;
 
-
 ## Endings
-## Ending 1
+**Ending 1**---[Ignorance of laser];
+
+**Ending 1**---[I'd rather sleep];
+
+**Ending 1**---[Strength of human];
+
+**Ending 1**---[Heart of human];
