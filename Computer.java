@@ -26,7 +26,7 @@ public class Computer extends Item {
         + "\n April 22, 2005, I finished assembling Teddy's body. He looks so cute just like my favorite teddy bear."
         + "\n May 15, 2005, I started building neural network for teddy."
         + "\n July 28, 2005, I observed that Teddy has learned basic tasks like"
-        + "grabbing things and walk around."
+        + " grabbing things and walking around."
         + "\n March 13, 2006, Happy birthday Teddy! It's been a year and you are developing intelligence so fast."
         + "\n April 30, 2006, I added electrode to Teddy so that he can help me electrocute chemical solutions."
         + "\n May 25, 2006, Electrocuting function is way more powerful than I thought, I was accidently electrocuted to unconscious today. But it's not Teddy's fault, I should have been more careful."

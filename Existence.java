@@ -191,8 +191,8 @@ public class Existence {
     public void fight(Existence e) {
         this.weaken();
         e.weaken();
-        System.out.println("You fought with Teddy fiercly, but he's way more stronger than you." 
-        + this.getHealth() + "'I couldn't win by fighting. I should find a better way to stop him...'");
+        System.out.println("You fought with Teddy fiercly, but he's way more stronger than you. \n" 
+        + this.getHealth() + "\n 'I couldn't win by fighting. I should find a better way to stop him...'");
     }
 
     /**

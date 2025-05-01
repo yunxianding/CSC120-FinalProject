@@ -73,7 +73,7 @@ public class Main {
                         "\n [TASK 5 COMPLETED]-'Clickkk'";
         String taskSixMessage = 
                         "\n [TASK 6 COMPLETED ]- After reading the history, you discovered the cruel reality:" +
-                        "\n You used to scientist Teddy, but he traded body with you, erased your memory, dissambled you and put you in the bedroom." +
+                        "\n You used to scientist Teddy, but your Teddy bot traded body with you, erased your memory, dissambled you and put you in the bedroom." +
                         "\n You are still Teddy, betrayed and trapped inside the body of robot Teddy.";
         String taskSevenMessage = 
                         "\n [TASK 7 COMPLETED]- After turning off the laser, you feel much safter exploring around the lab." +
@@ -141,7 +141,7 @@ public class Main {
                         "- \"walk to item\" to walk to something." +
                         "- \"open item\" to open something.\n" + 
                         "- \"put on item\" to put on something.\n" + 
-                        "- \"put down item\" to put down something.\n" + 
+                        "- \"put down item\" to put down something.-[Note] This command isn't currently working\n" + 
                         "- \"health\" to check your curent health status.\n";
         String cheatSheet2 = 
                         "- \"toggle control\" to toggle control buttons.\n";
@@ -248,7 +248,7 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
                                 player.take(teddyBear);
                             } else {
-                                System.out.println("You cannot take " + itemName + " .");
+                                System.out.println("You cannot take " + itemName + ".");
                             }
                         } else {
                             System.out.println("What do you want to take?");
@@ -279,7 +279,7 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("computer")) {
                                 player.touch(computer);
                             } else {
-                                System.out.println("You cannot touch " + itemName + " .");
+                                System.out.println("You cannot touch " + itemName + ".");
                             } 
                         } else {
                             // There is only one word
@@ -304,8 +304,8 @@ public class Main {
                                 player.stageTwo = true; // Player enter stage 2
                                 player.stageThree = false;
                             } else if (itemName.equalsIgnoreCase("computer")) {
-                                player.open(computer); 
                                 System.out.println(taskFiveMessage); // [Task 5] completed
+                                player.open(computer);  // This need to after task 5 message due to the contents
                             } else if (itemName.equalsIgnoreCase("history")) {
                                 computer.openHistory();
                                 System.out.println(taskSixMessage);
@@ -318,7 +318,7 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("control")) {
                                 computer.openControlPanel(player, lab);
                             } else {
-                                System.out.println("You cannot open " + itemName + " .");
+                                System.out.println("You cannot open " + itemName + ".");
                             } 
                         } else {
                             System.out.println("What do you want to open?");
@@ -335,7 +335,7 @@ public class Main {
                             } else if (folderName.equalsIgnoreCase("control")) {
                                 computer.closeControlPanel();
                             } else {
-                                System.out.println("You cannot close " + folderName);
+                                System.out.println("You cannot close " + folderName + ".");
                             }
                         } else {
                             System.out.println("What do you want to close?");

@@ -31,11 +31,11 @@ public class Robot extends Existence {
      * @param item s
      */
     public void putOn(Item s) {
-        if ((inventory.contains(s)) && (s.canBePutOn == true) == true) {
+        if ((inventory.contains(s)== true) && (s.canBePutOn == true)) {
             System.out.println("You have put on " + s.name + ".");
             inventory.remove(s);
         } else {
-            System.out.println("[INVALID COMMAND lmao]");
+            System.out.println("You don't have " + s.name + " in your inventory yet. Take it first!");
         }
     }
 
