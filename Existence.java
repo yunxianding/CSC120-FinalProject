@@ -43,7 +43,14 @@ public class Existence {
     }
 
     // Methods
-
+    
+    /**
+     * Getter for currentRoom
+     * @return the current room name
+     */
+    public String getCurrentLocation(){
+        return this.currentRoom.name;
+    }
     /**
      * Accessor for one's health bar
      * @return Current health bar number

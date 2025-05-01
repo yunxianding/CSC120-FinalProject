@@ -180,6 +180,11 @@ public class Main {
                         } 
                         break;
                     
+                    // Access location at the time
+                    case "location":
+                        System.out.println(player.getCurrentLocation());
+                        break;
+                    
                     // Let the player exit at any point in the game
                     case "exit":
                         System.out.println("Goodbye! We hope you enjoyed the game!");
