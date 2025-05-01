@@ -16,7 +16,6 @@
 * `trade` to trade bodies;
 * `electrocute` to electrocute another existence;
 * `fight` to fight another existence;
-* `destruct` to initiate the self-destruct program of a robot;
 
 ## Tasks
 ## Stage 1
@@ -25,10 +24,14 @@
 - [Task 3] Look around, open the door to the lab;
 ## Stage 2
 - [Task 4] Crawl into the lab;
-- [Task 5] Unlock the computer and see 2 folders;
-- [Task 6] Click on the history folder, find the story;
-- [Task 7] Click on the controls folder and play around with the control buttons;
+- [Task 5] Open the computer and see 2 folders;
+- [Task 6] Open the history folder, find the story;
+- [Task 7] Open the controls folder and turn off the laser;
 ## Stage 3
 - [Task 8] Electrocute the scientist;
 - [Task 9] Trade bodies;
 - [Task 10] Choose to forgive or revenge;
+
+
+## Endings
+## Ending 1
