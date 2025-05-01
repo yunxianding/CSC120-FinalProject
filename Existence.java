@@ -170,9 +170,9 @@ public class Existence {
         if (this.inventory.contains(s) && s.canBeGrabbed == true) {
             this.inventory.remove(s);
             this.currentRoom.itemsInRoom.add(s);
-            System.out.println("You put down the " + s.name + " in the " + this.currentRoom + ".");
+            System.out.println("You put down the " + s.name + ".");
         } else {
-            System.out.println("[INVALID COMMAND]");
+            System.out.println("You cannot put down" + s.name);
         }
     }
 
@@ -191,7 +191,8 @@ public class Existence {
     public void fight(Existence e) {
         this.weaken();
         e.weaken();
-        System.out.println("Fighting!!!" + this.getHealth());
+        System.out.println("You fought with Teddy fiercly, but he's way more stronger than you." 
+        + this.getHealth() + "'I couldn't win by fighting. I should find a better way to stop him...'");
     }
 
     /**
