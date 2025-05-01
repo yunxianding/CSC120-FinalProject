@@ -80,7 +80,18 @@ public class Main {
                         "\n You turned your head to the direction of the sound and was surprised to see" +
                         "a scientist entered the lab through another door you didn't notice before." +
                         "\n 'Teddy???''Teddy???'" +
-                        "[CONVERSATION TO BE ADDED]";
+                        "\n 'Hey Teddy! Love your new body?'"+
+                        "\n You walk towards Teddy filled with mixed emotions."+
+                        "\n 'You left me with no option'"+
+                        "\n Whatever Teddy did to you was wrong. "+
+                        "\n You ask Teddy to give your body back, but he refuses." +
+                        "\n You remember that, as the one who built him, there is only one way to bring him down: electrocution." +
+                        "\n In an attempt to electrocute him, Teddy fights back. You fight." +
+                        "\n Now you are left with two options:" +
+                        "\n Will you forgive him or electrocute him and reclaim your identity?" +
+                        "\n === FINAL DECISION ===" +
+                        "\n Type *electrocute* to bring Teddy down and reclaim your body." +
+                        "\n Type *forgive* to spare him and walk away.";
         String cheatSheet1 = 
                         "- \"take item\" to take something and add it to your inventory.\n" + 
                         "- \"touch item\" to touch an item and see its description.\n" + 
