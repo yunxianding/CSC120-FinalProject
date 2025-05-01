@@ -44,6 +44,6 @@ public class Robot extends Existence {
      */
     public void electrocute(Human h) {
         h.isUnconscious = true;
-        System.out.println("You electrocuted " + h.name + " and they temporarily fall unconscious.");
+        System.out.println("You electrocuted " + h.name + " and he temporarily fall unconscious.");
     }
 }
