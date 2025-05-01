@@ -130,6 +130,7 @@ public class Main {
                         "\n 'By the way...'He asked sarcastically, 'Teddy! Love your new body?'"+
                         "\n 'But I'm sorry you won't be able to enjoy it any longer because I'm going to power you off again.'" +
                         "\n He walks approach the computer with a cold face. Quick! You need to do something to stop him from powering you off!";
+
         String cheatSheet1 = 
                         "- \"take item\" to take something and add it to your inventory.\n" + 
                         "- \"touch item\" to touch an item and see its description.\n" + 
