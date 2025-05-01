@@ -1,34 +1,23 @@
 # CSC120-FinalProject-Teddy Bot🤖
-## Contributors: Clare, Joyce, Tammy, Yunxian
+Contributors: Clare, Joyce, Tammy, Yunxian
 
 ## Deliverables CheckList: 🚧(in construction) ☑️(finished)
  - Your final codebase 🚧
  - Your revised annotated architecture diagram 🚧
- - Design justification (including a brief discussion of at least one alternative you considered) 🚧
+ - Design justification (including a brief discussion of at least one alternative you considered) ☑️
  - A map of your game's layout (if applicable) 🚧
  - `cheatsheet.md` 🚧
  - Completed `rubric.md` 🚧
 
 ## Design Justification 🚧
-Our game centers around a scientist named Teddy who creates a humanoid robot named Teddy in hopes of building a lifelong companion. The story unfolds in two main rooms: a bedroom and a laboratory, and begins after a major twist has already occurred — the robot has traded bodies with its creator.
 
-The player begins the game as Teddy the scientist, now trapped in a robot's body, waking up disoriented and damaged — missing a leg and an eye. The player must recover these parts in the bedroom, then navigate the lab's laser-filled corridors to reach the computer, which reveals the diary history of how things went wrong.
+**Current Design:**
 
-Through this exploration, the player gradually discovers the truth: Teddy the robot developed reasoning, memory, and a desire to become human — ultimately betraying his creator. The player, now inhabiting the robot shell, is faced with a final moral decision: forgive or seek revenge. Forgiveness ends the game peacefully, while revenge triggers a final showdown in which the player must disable the robot and reclaim their body.
-
-**Why This Design?**
-
-We wanted the design to feel like an adventure puzzle wrapped inside a sci-fi short story, where gameplay and narrative are deeply connected — and the player slowly realizes they’re not just fixing a robot, they’re reclaiming a stolen identity.
-
-In Stage 1, the physical repairs symbolize the first step toward regaining control. You’re not just putting on a leg or an eye — you’re beginning to piece together a self that’s been shattered.
-
-In Stage 2, interacting with the control panel isn’t just mechanical. Turning on reasoning and memory becomes symbolic of reclaiming your humanity — you start thinking critically, recalling the past, and questioning your reality.
-
-By the time you reach Stage 3, the final confrontation forces a moral choice: forgive or destroy. This moment shifts from being purely about mechanics to letting the player shape the outcome of the story. If they choose to forgive, it’s a calm resolution — a reflection of empathy and closure. But if they choose revenge, the game becomes more intense and action-driven. They get to fight the robot, face resistance, and ultimately electrocute it to reclaim their body. That path adds tension and excitement, making the gameplay feel dynamic and rewarding.
+Our game is a fun text-based adventure wrapped inside a sci-fi short story. The player begins the game waking up damaged, trapped in a robot's body. An exciting adventure is waiting for them to discover their identity and unreveal the hidden truth. Make your decisions wisely every step...They could lead to very different endings...
 
 **Alternative Considered:**
 
-One alternative idea we brainstormed early on involved implementing a Soul class. The concept was that Teddy’s human soul had been fragmented and scattered after the body swap. The player would collect these soul fragments throughout the game, and each soul would unlock parts of Teddy's memory and personality. This would create a longer, more exploratory experience that tied achievements to emotional growth. Unfortunately, due to time constraints, we were unable to fully implement this mechanic — but it remains one of our favorite unbuilt ideas.
+One alternative idea we brainstormed early on involved implementing a Soul class. The concept was that Teddy’s human soul had been fragmented and scattered after the body swap. The player would collect these soul fragments throughout the game, and each soul would unlock parts of Teddy's memory and personality. This would create a longer, more exploratory experience that tied achievements to emotional and coginitive growth.Unfortunately, due to time constraints, we were unable to fully implement this mechanic — but it remains one of our favorite unbuilt ideas.
 
 ## Layout Map 🚧
 ![Teddy Bot Layout Map](./Image/layout%20map.jpg)
@@ -39,7 +28,7 @@ Figure 1: Visual layout of the Teddy Bot Adventure game
  1. Our **overall approach** to tackling this project is coming up with a game plot first, then write the possible classes we need and their possible interations. After finishing the draft of the classes, we implement them in `Main.java` and write the game loop. 🕹️
  2. We definitely learned so much **new thing(s)** in completing this project: 🤩
     * We learned about contructing an architecture diagram;
-    * We learned about working how to effectively use Github for team projects;
+    * We learned about how to effectively use Github for team projects;
     * We learned about how to implement a game loop;
  3. However, there are still many things we wish we had **implemented differently**: 👾
     * We wish we had implemented a `Soul` class and it would be an adventure of collecting the scattered souls along the way;
@@ -48,6 +37,8 @@ Figure 1: Visual layout of the Teddy Bot Adventure game
  4. If we had **unlimited time**, we would implement these additional features: 🧸
     * Add more rooms so that it will be a longer adventure;
     * Make more commands available;
+    * Implement the `Soul` class;
+    * Include more endings;
  5. The most helpful **piece of feedback** we received: 🚧
     * "Yunxian":  The most useful feedback I got is from Tammy. She told me we can use `switch-case` instead of many `if-else`statements in the main game loop. 
  6. If we could go back in time and give our past selves some **advice** about this project, we would give these tips: 😃
