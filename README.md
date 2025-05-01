@@ -20,7 +20,7 @@ Our game is a fun text-based adventure wrapped inside a sci-fi short story. The 
 One alternative idea we brainstormed early on involved implementing a Soul class. The concept was that Teddy’s human soul had been fragmented and scattered after the body swap. The player would collect these soul fragments throughout the game, and each soul would unlock parts of Teddy's memory and personality. This would create a longer, more exploratory experience that tied achievements to emotional and coginitive growth.Unfortunately, due to time constraints, we were unable to fully implement this mechanic — but it remains one of our favorite unbuilt ideas.
 
 ## Layout Map 🚧
-![Teddy Bot Layout Map](./Image/layout%20map.jpg)
+![Teddy Bot Layout Map](./Layout%20Map%20(1).jpg)
 Figure 1: Visual layout of the Teddy Bot Adventure game 
 
 
