@@ -115,7 +115,7 @@ public class Main {
                         "Teddy doesn't understand, but you know what is driving you to make this decison: a golden heart of human.";
         String endingFive =
                         "\n[Ending 5 --- Fire of revenge]" + 
-                        "You chose to initiate the self desctruct program implemented inside Teddy bot." +
+                        "You chose to initiate the self-destruct program implemented inside Teddy bot." +
                         "The fire from the explosion makes it hard for you to see things." +
                         "Among the red flames, you see the fire of revenge.";
         String stageThreeMessage = 
@@ -303,11 +303,16 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("plant") ||itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
                                 player.open(irisPot);
                             } else if (itemName.equalsIgnoreCase("door")) {
-                                player.open(door, lab);
-                                System.out.println(taskThreeMessage + stageTwoMessage); // [Task 3] completed
-                                player.stageOne = false;
-                                player.stageTwo = true; // Player enter stage 2
-                                player.stageThree = false;
+                                if(player.canWalk == true){
+                                    player.open(door, lab);
+                                    System.out.println(taskThreeMessage + stageTwoMessage); // [Task 3] completed
+                                    player.stageOne = false;
+                                    player.stageTwo = true; // Player enter stage 2
+                                    player.stageThree = false;
+                                }
+                                else {
+                                    System.out.println("Uh oh! You cannot reach the door handle because you can't stand up yet -- you're missing a leg.");
+                                }
                             } else if (itemName.equalsIgnoreCase("computer")) {
                                 player.open(computer); 
                                 System.out.println(taskFiveMessage); // [Task 5] completed
