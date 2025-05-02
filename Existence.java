@@ -13,6 +13,7 @@ public class Existence {
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
     public Boolean isAlive;
+    public Boolean wantsToLive;
     public Boolean canGoToLab;
     public Boolean canWalk;
     public Boolean canInspect;
@@ -32,6 +33,7 @@ public class Existence {
     public Existence(String name, Room currentRoom) {
         this.name = "Teddy";
         this.isAlive = true;
+        this.wantsToLive = true;
         this.health = 100; // User starts the game with full health.
         this.inventory = new ArrayList<Item>();
         this.currentRoom = currentRoom;
@@ -95,20 +97,22 @@ public class Existence {
     * Starts and runs the conversation with the user
     * Asks the user how many rounds they want to chat for
     */
+    @SuppressWarnings("resource") // Allows Scanner to stay open for operation in game loop.
     public void respawnChat() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you want to die or respawn to play again? Press Y to respawn and N to die.");
+        System.out.println("\nDo you want to die or respawn to play again? Press Y to respawn and N to die.");
 
         String choice = scanner.nextLine();
         if (choice.equals("Y")) {
             this.respawn();
             System.out.println("You're alive again - Hooray!");
         } else if (choice.equals("N")) {
+            this.wantsToLive = false;
             System.out.println("Okay, you're dead. Bye!");
         } else {
             System.out.println("I don't understand what you wrote. Try only Y or N.");
         }
-        scanner.close();
+        
     }
 
     // Game Functions

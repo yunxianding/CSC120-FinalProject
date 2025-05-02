@@ -465,8 +465,23 @@ public class Main {
                                     player.currentRoom = bedroom;
                                 } else if (itemName.equalsIgnoreCase("computer") || itemName.equalsIgnoreCase("lab")) {
                                     if (lab.laserActive == true) {
+                                        // Player dies by walking through deadly laser
                                         System.out.println(endingOne);
-                                        gameOn = false;
+                                        player.isAlive = false;
+
+                                        // Player is asked whether they want to respawn
+                                        player.respawnChat();
+                                        
+                                        // Game acts accordingly to player's wish
+                                        if(player.wantsToLive == true) {
+                                            gameOn = true;
+                                            System.out.println("\nNow you can make commands again.");
+                                        }
+                                        else {
+                                            // Terminate game loop - Player chooses to end the game
+                                            gameOn = false;
+                                        }
+
                                     } else {
                                         player.walkTo(lab, computer);
                                         player.currentRoom = lab;
