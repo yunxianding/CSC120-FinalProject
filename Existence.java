@@ -7,7 +7,8 @@ public class Existence {
 
     // Attributes
     public String name;
-    public Room currentRoom; 
+    public Room currentRoom; // The current location of 'Existence'
+    
     // Should we also have an attribute for currentLocation? Like near some item?
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
@@ -33,6 +34,7 @@ public class Existence {
         this.isAlive = true;
         this.health = 100; // User starts the game with full health.
         this.inventory = new ArrayList<Item>();
+        this.currentRoom = currentRoom;
         this.canGoToLab = false; // Default to false
         this.canWalk = false; // Default to false because the player wake up with one lege missing
         this.canInspect = false; // Default to false because the player wake up with one eye missing
@@ -179,7 +181,7 @@ public class Existence {
             this.currentRoom.itemsInRoom.add(s);
             System.out.println("You put down the " + s.name + ".");
         } else {
-            System.out.println("You cannot put down" + s.name);
+            System.out.println("You cannot put down " + s.name);
         }
     }
 

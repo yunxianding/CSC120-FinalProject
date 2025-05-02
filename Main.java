@@ -138,13 +138,13 @@ public class Main {
                         "- \"look around\" to look around.\n" + 
                         "- \"inspect item\" to inspect something.\n" + 
                         "- \"crawl to item\" to crawl to something.\n" + 
-                        "- \"walk to item\" to walk to something." +
+                        "- \"walk to item\" to walk to something.\n" +
                         "- \"open item\" to open something.\n" + 
                         "- \"put on item\" to put on something.\n" + 
                         "- \"put down item\" to put down something.\n" + 
                         "- \"health\" to check your curent health status.\n";
         String cheatSheet2 = 
-                        "- \"toggle control\" to toggle control buttons.\n";
+                        "- \"toggle *control*\" to toggle control buttons.\n";
         String cheatSheet3 = 
                         "- \"trade\" to trade bodies.\n" + 
                         "- \"electrocute\" to electrocute another existence\n" + 
@@ -253,7 +253,7 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("teddy") || itemName.equalsIgnoreCase("bear")) {
                                 player.take(teddyBear);
                             } else {
-                                System.out.println("You cannot take " + itemName + " .");
+                                System.out.println("You cannot take " + itemName + ".");
                             }
                         } else {
                             System.out.println("What do you want to take?");
@@ -318,6 +318,9 @@ public class Main {
                                 // Since player is free to choose to perform task 6 or task 7 first,
                                 // They can only proceed to stage 3 when both are done
                                 if (taskSix == true && taskSeven == true) { 
+                                    player.stageOne = false;
+                                    player.stageTwo = false; 
+                                    player.stageThree = true; // Player enter stage 3
                                     System.out.println(stageThreeMessage);
                                 }
                             } else if (itemName.equalsIgnoreCase("control")) {
@@ -569,6 +572,9 @@ public class Main {
                                     System.out.println(taskSevenMessage);
                                     // Can proceed when both are done
                                     if (taskSix == true && taskSeven == true) {
+                                        player.stageOne = false;
+                                        player.stageTwo = false; 
+                                        player.stageThree = true; // Player enter stage 3
                                         System.out.println(stageThreeMessage);
                                     }
                                 } else {
