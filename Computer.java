@@ -20,7 +20,7 @@ public class Computer extends Item {
     /** Prints the history*/
     public void openHistory() {
         System.out.println("\n=== History ===");
-        System.out.println( "\n This is robotics scientist Teddy. Today is March 13, 2005, and I'm starting on building the first Teddy robot prototype." 
+        System.out.println( "\n This is robotics scientist Teddy. Today is March 13, 2005, and I'm starting on building the first Teddy robot prototype."
         + "I want to build Teddy robot as a functional lab assistant and emotional companion."
         + "I gave him the same name as me-I'm hoping that we can be best friends!"
         + "\n April 22, 2005, I finished assembling Teddy's body. He looks so cute just like my favorite teddy bear."

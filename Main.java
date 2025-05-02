@@ -115,7 +115,7 @@ public class Main {
                         "Teddy doesn't understand, but you know what is driving you to make this decison: a golden heart of human.";
         String endingFive =
                         "\n[Ending 5 --- Fire of revenge]" + 
-                        "You chose to initiate the self desctruct program implemented inside Teddy bot." +
+                        "You chose to initiate the self-destruct program implemented inside Teddy bot." +
                         "The fire from the explosion makes it hard for you to see things." +
                         "Among the red flames, you see the fire of revenge.";
         String stageThreeMessage = 
@@ -138,13 +138,13 @@ public class Main {
                         "- \"look around\" to look around.\n" + 
                         "- \"inspect item\" to inspect something.\n" + 
                         "- \"crawl to item\" to crawl to something.\n" + 
-                        "- \"walk to item\" to walk to something." +
+                        "- \"walk to item\" to walk to something.\n" +
                         "- \"open item\" to open something.\n" + 
                         "- \"put on item\" to put on something.\n" + 
                         "- \"put down item\" to put down something.-[Note] This command isn't currently working\n" + 
                         "- \"health\" to check your curent health status.\n";
         String cheatSheet2 = 
-                        "- \"toggle control\" to toggle control buttons.\n";
+                        "- \"toggle *control*\" to toggle control buttons.\n";
         String cheatSheet3 = 
                         "- \"trade\" to trade bodies.\n" + 
                         "- \"electrocute\" to electrocute another existence\n" + 
@@ -178,6 +178,11 @@ public class Main {
                         } else if (player.stageThree ==  true) {
                             System.out.println(cheatSheet1 + cheatSheet2 + cheatSheet3);
                         } 
+                        break;
+                    
+                    // Access location at the time
+                    case "location":
+                        System.out.println(player.getCurrentLocation());
                         break;
                     
                     // Let the player exit at any point in the game
@@ -298,11 +303,16 @@ public class Main {
                             } else if (itemName.equalsIgnoreCase("plant") ||itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
                                 player.open(irisPot);
                             } else if (itemName.equalsIgnoreCase("door")) {
-                                player.open(door, lab);
-                                System.out.println(taskThreeMessage + stageTwoMessage); // [Task 3] completed
-                                player.stageOne = false;
-                                player.stageTwo = true; // Player enter stage 2
-                                player.stageThree = false;
+                                if(player.canWalk == true){
+                                    player.open(door, lab);
+                                    System.out.println(taskThreeMessage + stageTwoMessage); // [Task 3] completed
+                                    player.stageOne = false;
+                                    player.stageTwo = true; // Player enter stage 2
+                                    player.stageThree = false;
+                                }
+                                else {
+                                    System.out.println("Uh oh! You cannot reach the door handle because you can't stand up yet -- you're missing a leg.");
+                                }
                             } else if (itemName.equalsIgnoreCase("computer")) {
                                 System.out.println(taskFiveMessage); // [Task 5] completed
                                 player.open(computer);  // This need to after task 5 message due to the contents
@@ -313,6 +323,9 @@ public class Main {
                                 // Since player is free to choose to perform task 6 or task 7 first,
                                 // They can only proceed to stage 3 when both are done
                                 if (taskSix == true && taskSeven == true) { 
+                                    player.stageOne = false;
+                                    player.stageTwo = false; 
+                                    player.stageThree = true; // Player enter stage 3
                                     System.out.println(stageThreeMessage);
                                 }
                             } else if (itemName.equalsIgnoreCase("control")) {
@@ -452,8 +465,23 @@ public class Main {
                                     player.currentRoom = bedroom;
                                 } else if (itemName.equalsIgnoreCase("computer") || itemName.equalsIgnoreCase("lab")) {
                                     if (lab.laserActive == true) {
+                                        // Player dies by walking through deadly laser
                                         System.out.println(endingOne);
-                                        gameOn = false;
+                                        player.isAlive = false;
+
+                                        // Player is asked whether they want to respawn
+                                        player.respawnChat();
+                                        
+                                        // Game acts accordingly to player's wish
+                                        if(player.wantsToLive == true) {
+                                            gameOn = true;
+                                            System.out.println("\nNow you can make commands again.");
+                                        }
+                                        else {
+                                            // Terminate game loop - Player chooses to end the game
+                                            gameOn = false;
+                                        }
+
                                     } else {
                                         player.walkTo(lab, computer);
                                         player.currentRoom = lab;
@@ -564,6 +592,9 @@ public class Main {
                                     System.out.println(taskSevenMessage);
                                     // Can proceed when both are done
                                     if (taskSix == true && taskSeven == true) {
+                                        player.stageOne = false;
+                                        player.stageTwo = false; 
+                                        player.stageThree = true; // Player enter stage 3
                                         System.out.println(stageThreeMessage);
                                     }
                                 } else {

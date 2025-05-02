@@ -14,14 +14,14 @@ public class Robot extends Existence {
      * @param health
      * @param isAlive
      */
-    public Robot(String name, Room room, Boolean isAlive, Boolean canGoToLab, Boolean canWalk, Boolean canInspect) {
-        super(name, room);
+    public Robot(String name, Room currentRoom, Boolean isAlive, Boolean canGoToLab, Boolean canWalk, Boolean canInspect) {
+        super(name, currentRoom);
         this.isAlive = true;
         this.health = 100; // Robot has less health than human.
         this.inventory = new ArrayList<Item>();
         this.canGoToLab = false; // Will unlock after achieving the first four tasks in stage 1
         this.canWalk = false; // Will unlock after adding leg to the body
-        this.canInspect = true; // Will unlock after adding eye to the body
+        this.canInspect = false; // Will unlock after adding eye to the body
         this.poweredOn = true; // Will be able to turn off after unlocking the control panel
     }
     
