@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 /**
- * The Human class extends Existence class and has unique features of ???TO BE ADDED
+ * The Human class extends Existence class and has unique features of 
+ * initiating the self destruct program in a robot
  */
 public class Human extends Existence {
     // Attributes
