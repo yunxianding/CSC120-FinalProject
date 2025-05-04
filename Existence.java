@@ -87,9 +87,9 @@ public class Existence {
         if(this.isAlive == false) { // Check that user is actually dead
             this.health = 100;
             this.isAlive = true;
-            System.out.println("I am reborn!");
+            System.out.println("'I am reborn!'");
         } else {
-            throw new RuntimeException("You are still alive! ");
+            System.out.println("You are still alive! ");
         }
     }
 
@@ -163,7 +163,7 @@ public class Existence {
      * @param s the item
      */
     public void take(Item s) {
-        if(this.inventory.contains(s)) {
+        if (this.inventory.contains(s)) {
             System.out.println("You already have " + s.name + ".");
         } else {
             this.inventory.add(s);
@@ -185,7 +185,7 @@ public class Existence {
             this.currentRoom.itemsInRoom.add(s);
             System.out.println("You put down the " + s.name + ".");
         } else {
-            System.out.println("You cannot put down " + s.name);
+            System.out.println("You cannot put down " + s.name + "because it's not in your inventory.");
         }
     }
 
@@ -206,6 +206,12 @@ public class Existence {
         e.weaken();
         System.out.println("You fought with Teddy fiercly, but he's way more stronger than you. \n" 
         + this.getHealth() + "\n 'I couldn't win by fighting. I should find a better way to stop him...'");
+    }
+
+    public void run() {
+        this.weaken();
+        System.out.println("You ran and ran, exhausting your strength.\n"  
+        + this.getHealth() + "\n 'I won't stop him by running away. I should find a better way to stop him...'");
     }
 
     /**
