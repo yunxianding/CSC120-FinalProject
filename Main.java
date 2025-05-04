@@ -614,7 +614,7 @@ public class Main {
                     // initiate the self-destrcuct program in the robot
                     case "destruct":
                         // If task 10 is done, can perform destruct
-                        scientist.selfDestruct(player);
+                        scientist.destruct(player);
                         // Completed task 11
                         // Print ending message 
                         break;
