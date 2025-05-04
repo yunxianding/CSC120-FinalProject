@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 /**
- * The Robot class extends Existence class and has the unique method of electrocute human
+ * The Robot class extends Existence class and has the unique method of 
+ * put on mechanical body parts and electrocute human
  */
 public class Robot extends Existence {
 
@@ -26,18 +27,27 @@ public class Robot extends Existence {
     }
     
     // Methods
+
     /**
-     * The robot can put on items that are mechanical parts of its body
-     * @param item s
-     */
-    public void putOn(Item s) {
-        if ((inventory.contains(s)== true) && (s.canBePutOn == true)) {
-            System.out.println("You have put on " + s.name + ".");
-            inventory.remove(s);
+    * The robot can put on items that are mechanical parts of its body.
+    * Handles putting on both the leg and the eye.
+    * @param item The item to put on (leg or eye).
+    */
+    public void putOn(Item item) {
+        if (this.inventory.contains(item)) {
+            if (item.name.equalsIgnoreCase("leg")) {
+                System.out.println("You have put on the leg.");
+                this.canWalk = true;
+            } else if (item.name.equalsIgnoreCase("eye")) {
+                System.out.println("You have put on the eye.");
+                this.canInspect = true;
+            } else {
+                System.out.println("This item cannot be put on.");
+            }
         } else {
-            System.out.println("You don't have " + s.name + " in your inventory yet. Take it first!");
-        }
+        System.out.println("You don't have the " + item.name + " in your inventory yet. Take it first!");
     }
+}
 
     /**
      * The robot can electrocute the human and make the human fall unconscious
