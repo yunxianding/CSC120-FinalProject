@@ -8,9 +8,9 @@
 
 **Yes** 2 pts: Game has **multiple possible paths / outcomes** (i.e. gameplay depends on player's choices and is not the same every time).
 
-_____ 1 pt: Gameplay supports **reversible moves** where reasonable (e.g., if you pick up an object, you should be able to put it back down again later, possibly in a different place; if you go north then you should be able to return to the previous location by going south unless something has blocked your return path).
+**Yes** 1 pt: Gameplay supports **reversible moves** where reasonable (e.g., if you pick up an object, you should be able to put it back down again later, possibly in a different place; if you go north then you should be able to return to the previous location by going south unless something has blocked your return path).
 
-————— 1 pt: Some paths through the game have **restricted access** until the player has completed a task or acquired a specific item (i.e. a key to open a door, etc.).
+**Yes** 1 pt: Some paths through the game have **restricted access** until the player has completed a task or acquired a specific item (i.e. a key to open a door, etc.).
 
 
 ## Back-End Design (10 pts)
@@ -29,7 +29,7 @@ _____ 1 pt: Gameplay supports **reversible moves** where reasonable (e.g., if yo
 ## General Items (10 pts):
 **Yes** 4 pts: Program compiles without errors or warnings.
 
-_____ 2 pts: Executes fully & consistently without crashing (exception/freeze).
+**Yes** 2 pts: Executes fully & consistently without crashing (exception/freeze).
 
 **Yes** 2 pt: Complies with style guidelines (missing items 1 pt each):
 
