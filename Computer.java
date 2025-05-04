@@ -48,14 +48,6 @@ public class Computer extends Item {
         + "I powered off robot Teddy, disassembled his robot leg and eye and put him in the bedroom.");
     }
 
-    /** 
-     * Close the history folder
-     * @return String of closed information
-     */
-    public String closeHistory() {
-        return("You have closed the History folder.");
-    }
-
     /** Displays the control panel with current switch states. 
      * @param r The robot whose controls are being toggled
      * @param rm The room where the lasers are
@@ -65,14 +57,6 @@ public class Computer extends Item {
         System.out.println("power control button for robot teddy: " + "On/Off"+ " current state: Powered On? " + r.poweredOn);
         System.out.println("laser control button for lab: " + "On/Off"+ " current state: Laser On?" + rm.laserActive);
         System.out.println("Toggle the buttons to change states");
-    }
-
-    /** 
-     * Close the controls folder
-     * @return String of closed information
-     */
-    public String closeControlPanel() {
-        return("You have closed the controls folder.");
     }
 
     /** Attempts to toggle power off/on
