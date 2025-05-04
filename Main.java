@@ -89,7 +89,7 @@ public class Main {
         String stageOneMessage = 
                         "\n[STAGE 1]" +
                         "\n You wake up on a bed, having no idea who you are." +
-                        "\n The only thing you know is that you possess a mechanical body" +
+                        "\n The only thing you know is that you possess a mechanical body " +
                         "with one leg and one eye missing." +
                         "\n 'Who am I? where am I? I should look around...'";
         String stageTwoMessage = 
@@ -98,14 +98,18 @@ public class Main {
                         "\n However, red laser is all over the lab, blocking your way to get to the computer." +
                         "\n 'The red laser looks dangerous, I need to figure out a safe way to get in...'";
         String endingOne = 
-                        "\n[Ending 1 --- Ignorance of laser]" +
+                        "\n[Ending 1 --- Ignorance of laser] " +
                         "You ignored the laser and walked into the lab. Within a second, you were cut into pieces. Better luck next life!";
         String endingTwo = 
-                        "\n[Ending 2 --- I'd rather sleep]" +
+                        "\n[Ending 2 --- I'd rather sleep] " +
                         "You turned off your power and was never able to wake up again. Good night and have a nice dream, Teddy.";
-        String endingThree =
-                        "\n[Ending 3 --- Strength of human]" +
+        String endingThree1 =
+                        "\n[Ending 3 --- Strength of human] " +
                         "You fought and fought, but never strong enough to beat done Teddy in the human body. He approached the computer and powered you off." +
+                        "Your last thought is: 'I can kind of understand why Teddy bot wants to be a human now...'"; 
+        String endingThree2 =
+                        "\n[Ending 3 --- Strength of human] " +
+                        "You ran around in terror, but that didn't stop Teddy. He approached the computer and powered you off." +
                         "Your last thought is: 'I can kind of understand why Teddy bot wants to be a human now...'"; 
         String endingFour = 
                         "\n[Ending 4 --- Heart of human]" +
@@ -130,12 +134,12 @@ public class Main {
                         "\n 'By the way...'He asked sarcastically, 'Teddy! Love your new body?'"+
                         "\n 'But I'm sorry you won't be able to enjoy it any longer because I'm going to power you off again.'" +
                         "\n He walks approach the computer with a cold face. Quick! You need to do something to stop him from powering you off!";
-
         String cheatSheet1 = 
                         "- \"take item\" to take something and add it to your inventory.\n" + 
                         "- \"touch item\" to touch an item and see its description.\n" + 
                         "- \"inventory\" to see your inventory. \n" + 
                         "- \"look around\" to look around.\n" + 
+                        "- \"location\" to see current location.\n" +
                         "- \"inspect item\" to inspect something.\n" + 
                         "- \"crawl to item\" to crawl to something.\n" + 
                         "- \"walk to item\" to walk to something.\n" +
@@ -148,7 +152,8 @@ public class Main {
         String cheatSheet3 = 
                         "- \"trade\" to trade bodies.\n" + 
                         "- \"electrocute\" to electrocute another existence\n" + 
-                        "- \"fight\" to fight another existence.\n";
+                        "- \"fight\" to fight another existence.\n" +
+                        "- \"run\" to run away from another existence.\n"; 
 
         // Starting the game
         System.out.println(welcomeMessage + basicInstructions + enteringMessage + stageOneMessage);
@@ -157,17 +162,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         // Game loop
-        while (gameOn == true) {
-
+        while (gameOn) {
+        
             // Accept a string of player inputs and split them
             String input = scanner.nextLine();
             String[] words = input.split(" ");
-
+        
             if (words.length > 0) {
                 String command = words[0]; // The first word is the command
             
-                // Trying switch case
-                switch(command) {
+                // Using switch case
+                switch (command) {
 
                     // Print cheatsheets based on current stage
                     case "help":
@@ -182,7 +187,7 @@ public class Main {
                     
                     // Access location at the time
                     case "location":
-                        System.out.println(player.getCurrentLocation());
+                        System.out.println("Your current location is " + player.getCurrentLocation());
                         break;
                     
                     // Let the player exit at any point in the game
@@ -208,36 +213,85 @@ public class Main {
                             player.lookAround(bedroom);
                         } else if (player.stageTwo == true || player.stageThree == true) {
                             player.lookAround(lab);
-                        } else {
-                            System.out.println("[INVALID COMMAND]");
-                        }
+                        } 
                         break;
 
                     // Fight the scientist (body occupied by the initial robot)
                     case "fight": 
-                        player.fight(scientist);
-                        if (player.health <= 0) {
-                            System.out.println(endingThree);
-                            gameOn = false;
+                        if (player.stageThree) {
+                            player.fight(scientist);
+                            if (player.health <= 0) {
+                                player.isAlive = false;
+                                System.out.println(endingThree1);
+                                // Player is asked whether they want to respawn
+                                player.respawnChat();
+                                // Game acts accordingly to player's wish
+                                if(player.wantsToLive == true) {
+                                    gameOn = true;
+                                    System.out.println("\nNow you can make commands again.");
+                                } else {
+                                    // Terminate game loop - Player chooses to end the game
+                                    gameOn = false;
+                                }
+                            } 
+                        } else {
+                            System.out.println("There is nothing to fight.");
                         }
                         break;
 
                     // electrocute the scientist
                     case "electrocute":
-                        player.electrocute(scientist);
-                        System.out.println(taskEightMessage);
+                        if (player.stageThree) {
+                            player.electrocute(scientist);
+                            System.out.println(taskEightMessage);
+                        } else {
+                            System.out.println("There is nothing to electrocute.");
+                        }
+                        break;
+
+                    // run away from the scientist
+                    case "run":
+                        if (player.stageThree) {
+                            player.run();
+                            if (player.health <= 0) {
+                                player.isAlive = false;
+                                System.out.println(endingThree2);
+                                // Player is asked whether they want to respawn
+                                player.respawnChat();
+                                // Game acts accordingly to player's wish
+                                if(player.wantsToLive == true) {
+                                    gameOn = true;
+                                    System.out.println("\nNow you can make commands again.");
+                                } else {
+                                    // Terminate game loop - Player chooses to end the game
+                                    gameOn = false;
+                                }
+                            } 
+                        } else if (player.canWalk == false) {
+                            System.out.println("You can't run with a leg missing!");
+                        } else {
+                            System.out.println("There is no reason for running around.");
+                        }
                         break;
 
                     // forgive -> ending 4
                     case "forgive":
-                        System.out.println(endingFour);
-                        gameOn = false;
+                        if (player.stageThree) {
+                            System.out.println(endingFour);
+                            gameOn = false;
+                        } else {
+                            System.out.println("There is no one here but yourself. Who are you forgiving?");
+                        }
                         break;
 
                     // revenge -> ending 5
                     case "revenge":
-                        System.out.println(endingFive);
-                        gameOn = false;
+                        if (player.stageThree) {
+                            System.out.println(endingFive);
+                            gameOn = false;
+                        } else {
+                            System.out.println("There is no one here but yourself. Who are you taking a revenge at?");
+                        }
                         break;
 
                     // Take items -> Look for user's next word to specify the Item being taken
@@ -275,7 +329,7 @@ public class Main {
                                 player.touch(box);
                             } else if (itemName.equalsIgnoreCase("leg")) {
                                 player.touch(leg);
-                            } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                            } else if (itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot") || itemName.equalsIgnoreCase("irisPot")) {
                                 player.touch(irisPot);
                             } else if (itemName.equalsIgnoreCase("eye")) {
                                 player.touch(eye);
@@ -300,10 +354,15 @@ public class Main {
                             // The player can open the box and the iris pot
                             if (itemName.equalsIgnoreCase("box")) {
                                 player.open(box);
-                            } else if (itemName.equalsIgnoreCase("plant") ||itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
-                                player.open(irisPot);
+                            } else if (itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot") || itemName.equalsIgnoreCase("irisPot")) {
+                                if (player.canWalk == true) {
+                                    player.open(irisPot);
+                                } else {
+                                    System.out.println("You cannot reach the iris pot up there by the window with a leg missing!");
+                                }
+                                
                             } else if (itemName.equalsIgnoreCase("door")) {
-                                if(player.canWalk == true){
+                                if(player.canWalk == true && player.canInspect == true){ // Player can only open door after the first two tasks are finished
                                     player.open(door, lab);
                                     System.out.println(taskThreeMessage + stageTwoMessage); // [Task 3] completed
                                     player.stageOne = false;
@@ -311,48 +370,44 @@ public class Main {
                                     player.stageThree = false;
                                 }
                                 else {
-                                    System.out.println("Uh oh! You cannot reach the door handle because you can't stand up yet -- you're missing a leg.");
+                                    System.out.println("'I can't see a door anywhere...'"); 
                                 }
                             } else if (itemName.equalsIgnoreCase("computer")) {
-                                System.out.println(taskFiveMessage); // [Task 5] completed
-                                player.open(computer);  // This need to after task 5 message due to the contents
+                                if (player.currentRoom == lab) { // Player needs to finish task 4 before they can proceed to task 5
+                                    System.out.println(taskFiveMessage); // [Task 5] completed
+                                    player.open(computer);  // This needs to be after task 5 message due to the contents
+                                } else {
+                                    System.out.println("You need to enter the lab first to reach the computer!");
+                                }
                             } else if (itemName.equalsIgnoreCase("history")) {
-                                computer.openHistory();
-                                System.out.println(taskSixMessage);
-                                taskSix = true;
-                                // Since player is free to choose to perform task 6 or task 7 first,
-                                // They can only proceed to stage 3 when both are done
-                                if (taskSix == true && taskSeven == true) { 
-                                    player.stageOne = false;
-                                    player.stageTwo = false; 
-                                    player.stageThree = true; // Player enter stage 3
-                                    System.out.println(stageThreeMessage);
+                                if (!computer.locked) { // Player can only open history folder after opening the computer
+                                    computer.openHistory();
+                                    System.out.println(taskSixMessage);
+                                    taskSix = true;
+                                    // Since player is free to choose to perform task 6 or task 7 first,
+                                    // They can only proceed to stage 3 when both are done
+                                    if (taskSix && taskSeven) { 
+                                        player.stageOne = false;
+                                        player.stageTwo = false; 
+                                        player.stageThree = true; // Player enters stage 3
+                                        System.out.println(stageThreeMessage);
+                                    }
+                                } else {
+                                    System.out.println("You need to open the computer first!");
                                 }
                             } else if (itemName.equalsIgnoreCase("control")) {
-                                computer.openControlPanel(player, lab);
+                                if (!computer.locked) { // Player can only open control panel folder after opening the computer
+                                    computer.openControlPanel(player, lab);
+                                } else {
+                                    System.out.println("You need to open the computer first!");
+                                }
                             } else {
                                 System.out.println("You cannot open " + itemName + ".");
-                            } 
+                            }
                         } else {
                             System.out.println("What do you want to open?");
                         }
                         break;
-
-                    // Close the computer folders
-                    case "close":
-                        if (words.length >= 2) {
-                            String folderName = words[1];
-
-                            if (folderName.equalsIgnoreCase("history")) {
-                                computer.closeHistory();
-                            } else if (folderName.equalsIgnoreCase("control")) {
-                                computer.closeControlPanel();
-                            } else {
-                                System.out.println("You cannot close " + folderName + ".");
-                            }
-                        } else {
-                            System.out.println("What do you want to close?");
-                        }
 
                     // Inspect items to get its description and status
                     case "inspect":
@@ -370,7 +425,7 @@ public class Main {
                                     player.inspect(box);
                                 } else if (itemName.equalsIgnoreCase("leg")) {
                                     player.inspect(leg);
-                                } else if (itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                                } else if (itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot") || itemName.equalsIgnoreCase("irisPot")) {
                                     player.inspect(irisPot);
                                 } else if (itemName.equalsIgnoreCase("eye")) {
                                     player.inspect(eye);
@@ -402,7 +457,7 @@ public class Main {
                             }  else if (itemName.equalsIgnoreCase("box")) {
                                 player.crawlTo(bedroom, box);
                                 player.currentRoom = bedroom;
-                            } else if (itemName.equalsIgnoreCase("window") || itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                            } else if (itemName.equalsIgnoreCase("window") || itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot") || itemName.equalsIgnoreCase("irisPot")) {
                                 player.crawlTo(bedroom, irisPot);
                                 player.currentRoom = bedroom;
                             } else if (itemName.equalsIgnoreCase("door")) {
@@ -431,9 +486,8 @@ public class Main {
                                   
                             }
 
-                            // If the third word is none of the names of the items, we print out "[INVALID COMMAND]"
                             else {
-                                System.out.println("[INVALID COMMAND]");
+                                System.out.println("You can't crawl to "+ itemName);
                             }
                         
                         } else {
@@ -457,7 +511,7 @@ public class Main {
                                 }  else if (itemName.equalsIgnoreCase("box")) {
                                     player.walkTo(bedroom, box);
                                     player.currentRoom = bedroom;
-                                } else if (itemName.equalsIgnoreCase("window") || itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot")) {
+                                } else if (itemName.equalsIgnoreCase("window") || itemName.equalsIgnoreCase("plant") || itemName.equalsIgnoreCase("iris") || itemName.equalsIgnoreCase("pot") || itemName.equalsIgnoreCase("irisPot")) {
                                     player.walkTo(bedroom, irisPot);
                                     player.currentRoom = bedroom;
                                 } else if (itemName.equalsIgnoreCase("door")) {
@@ -531,12 +585,14 @@ public class Main {
                                 // leg and eye
                                 if (itemName.equalsIgnoreCase("leg")) {
                                     player.putOn(leg);
-                                    player.canWalk = true; // The player can walk after putting on the leg
-                                    System.out.println(taskOneMessage); // [Task 1] completed
+                                    if (player.canWalk == true) {
+                                        System.out.println(taskOneMessage); // [Task 1] completed
+                                    }
                                 } else if (itemName.equalsIgnoreCase("eye")) {
                                     player.putOn(eye);
-                                    player.canInspect = true; // The player can inspect after putting on the eye
-                                    System.out.println(taskTwoMessage); // [Task 2] completed
+                                    if (player.canInspect == true) {
+                                        System.out.println(taskTwoMessage); // [Task 2] completed
+                                    }
                                 } else {
                                     System.out.println("You cannot put on " + itemName +" .");
                                 }
@@ -544,9 +600,6 @@ public class Main {
 
                             // If the preposition is down, we perform `putDown`
                             else if (preposition.equalsIgnoreCase("down")) { // Put down method is not working
-
-                                // [NEED TO CONSTRUCT LATER]
-                                //Exception in thread "main" java.lang.NullPointerException: Cannot read field "itemsInRoom" because "this.currentRoom" is null
 
                                 // The player can put down these transportable items:
                                 // leg, eye, teddy bear
@@ -607,24 +660,18 @@ public class Main {
                 
                     // trade bodies
                     case "trade":
-                        player.tradeBody(player, scientist);
-                        System.out.println(taskNineMessage);
+                        if (scientist.isUnconscious == true) {
+                            player.tradeBody(player, scientist);
+                            System.out.println(taskNineMessage);
+                        } else {
+                            System.out.println("You can't trade body yet!");
+                        }
                         break;
 
-                    // initiate the self-destrcuct program in the robot
-                    case "destruct":
-                        // If task 10 is done, can perform destruct
-                        scientist.destruct(player);
-                        // Completed task 11
-                        // Print ending message 
-                        break;
                 } // close parenthesis for switch(command)
             } // close parenthesis for if(words.length > 0)
-
-     
-            
-
-        } scanner.close(); // close the scanner outside of the while loop
+        } // close parenthesis for while loop
+        scanner.close(); // close the scanner outside of the while loop
     } // close parenthesis for public static void main(String[] args)
 } // close parenthesis for public Class Main
 
