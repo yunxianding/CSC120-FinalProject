@@ -33,7 +33,7 @@ public class Human extends Existence {
      * start the self-destruct program of the robot
      * @param r the robot body to destroy
      */
-    public void selfDestruct(Robot r) {
+    public void destruct(Robot r) {
         System.out.println("\nSelf-destruct sequence initiated! Boom! " + r.name + "bot is gone forever.");
         r.die();
     }
