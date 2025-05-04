@@ -2,14 +2,14 @@
 Contributors: Clare, Joyce, Tammy, Yunxian
 
 ## Deliverables CheckList: 🚧(in construction) ☑️(finished)
- - Your final codebase 🚧
- - Your revised annotated architecture diagram 🚧
+ - Your final codebase ☑️
+ - Your revised annotated architecture diagram ☑️
  - Design justification (including a brief discussion of at least one alternative you considered) ☑️
- - A map of your game's layout (if applicable) 🚧
- - `cheatsheet.md` 🚧
- - Completed `rubric.md` 🚧
+ - A map of your game's layout (if applicable) ☑️
+ - `cheatsheet.md` ☑️
+ - Completed `rubric.md` ☑️
 
-## Design Justification 🚧
+## Design Justification 
 
 **Current Design:**
 
@@ -19,7 +19,7 @@ Our game is a fun text-based adventure wrapped inside a sci-fi short story. The 
 
 One alternative idea we brainstormed early on involved implementing a Soul class. The concept was that Teddy’s human soul had been fragmented and scattered after the body swap. The player would collect these soul fragments throughout the game, and each soul would unlock parts of Teddy's memory and personality. This would create a longer, more exploratory experience that tied achievements to emotional and coginitive growth.Unfortunately, due to time constraints, we were unable to fully implement this mechanic — but it remains one of our favorite unbuilt ideas.
 
-## Layout Map 🚧
+## Layout Map 
 ![Teddy Bot Layout Map](./Layout%20Map%20(1).jpg)
 Figure 1: Visual layout of the Teddy Bot Adventure game 
 
@@ -39,7 +39,7 @@ Figure 1: Visual layout of the Teddy Bot Adventure game
     * Make more commands available;
     * Implement the `Soul` class;
     * Include more endings;
- 5. The most helpful **piece of feedback** we received: 🚧
+ 5. The most helpful **piece of feedback** we received: 🤯
     * "Yunxian":  The most useful feedback I got is from Tammy. She told me we can use `switch-case` instead of many `if-else`statements in the main game loop.
     * "Joyce": When I constructed the computer class, I was unsure about how to let players interact with different switches, but the suggestion from my friend to treat the control panel as a menu that reflects the current state of each system (like robot power and lab lasers) gave me a clear direction. It helped me build openControlPanel() with dynamic output and link toggle commands directly to in-game consequences.
  6. If we could go back in time and give our past selves some **advice** about this project, we would give these tips: 😃
