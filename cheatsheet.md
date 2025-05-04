@@ -5,10 +5,12 @@
 * `touch item` to touch an item and see its description;
 * `inventory` to see your inventory; 
 * `look around` to look around;
+* ·location` to see current location;
 * `inspect item` to inspect something;
 * `crawl to item` to crawl to something;
 * `walk to item` to walk to something;
 * `open item` to open something;
+* ·close item` to close something;
 * `put on item` to put on something; 
 * `put down item` to put down something;
 * `health` to check your curent health status;
@@ -16,6 +18,7 @@
 * `trade` to trade bodies;
 * `electrocute` to electrocute another existence;
 * `fight` to fight another existence;
+* `run` to run away from another existence;
 
 ## Tasks
 **Stage 1**
@@ -35,10 +38,10 @@
 - [Task 10] Choose to forgive or revenge;
 
 ## Endings
-**Ending 1**---[Ignorance of laser];
+* **Ending 1**---[Ignorance of laser];
 
-**Ending 2**---[I'd rather sleep];
+* **Ending 2**---[I'd rather sleep];
 
-**Ending 3**---[Strength of human];
+* **Ending 3**---[Strength of human];
 
-**Ending 4**---[Heart of human];
+* **Ending 4**---[Heart of human];
