@@ -9,8 +9,8 @@ import java.util.List;
 public class Room {
     
     // Attributes
-    public String name = "<Name Unknown>";
-    public String description = "<Description Unknown>";
+    public String name;
+    public String description;
     public Boolean laserEquipped;
     public Boolean laserActive;
     public List<Item> itemsInRoom;
