@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 /**
- * The Robot class extends Existence class and has the unique method of 
- * put on mechanical body parts and electrocute human
+ * The Robot class extends Existence class
+ * It has unique attribute of boolean poweredOn
+ * and unique methods of put on mechanical body parts and electrocute human
  */
 public class Robot extends Existence {
 
@@ -10,20 +11,23 @@ public class Robot extends Existence {
     public Boolean poweredOn;
     
     /**
-     * Default constructor for 'Human'
-     * @param name
-     * @param health
-     * @param isAlive
+     * Constructor for Robot
+     * @param name robot's name
+     * @param currentRoom the robot's current location
+     * @param isAlive the robot's life status
+     * @param canGoToLab indicator for whether player has finished stage 1 
+     * @param canWalk indicator for whether player has put on leg
+     * @param canInspect indicator for whether player has put on eye
      */
     public Robot(String name, Room currentRoom, Boolean isAlive, Boolean canGoToLab, Boolean canWalk, Boolean canInspect) {
         super(name, currentRoom);
         this.isAlive = true;
         this.health = 100; // Robot has less health than human.
         this.inventory = new ArrayList<Item>();
-        this.canGoToLab = false; // Will unlock after achieving the first four tasks in stage 1
-        this.canWalk = false; // Will unlock after adding leg to the body
-        this.canInspect = false; // Will unlock after adding eye to the body
-        this.poweredOn = true; // Will be able to turn off after unlocking the control panel
+        this.canGoToLab = false; // will unlock after achieving the first four tasks in stage 1
+        this.canWalk = false; // will unlock after adding leg to the body
+        this.canInspect = false; // will unlock after adding eye to the body
+        this.poweredOn = true; // will be able to turn off after unlocking the control panel
     }
     
     // Methods
