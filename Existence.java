@@ -8,8 +8,6 @@ public class Existence {
     // Attributes
     public String name;
     public Room currentRoom; // The current location of 'Existence'
-    
-    // Should we also have an attribute for currentLocation? Like near some item?
     protected ArrayList<Item> inventory = new ArrayList<>(); 
     protected int health; // Imaginary health bar
     public Boolean isAlive;
@@ -57,7 +55,7 @@ public class Existence {
     }
     /**
      * Accessor for one's health bar
-     * @return Current health bar number
+     * @return current health bar number/100
      */
     public String getHealth() {
         return ("Your current health is: " + this.health + " /100");
@@ -94,9 +92,9 @@ public class Existence {
     }
 
     /**
-    * Starts and runs the conversation with the user
-    * Asks the user how many rounds they want to chat for
-    */
+     * Starts and runs the conversation with the user
+     * Asks the user how many rounds they want to chat for
+     */
     @SuppressWarnings("resource") // Allows Scanner to stay open for operation in game loop.
     public void respawnChat() {
         Scanner scanner = new Scanner(System.in);
@@ -148,11 +146,9 @@ public class Existence {
        "\n 'I want to try opening one of the folders...'");
     }
 
-    
-
     /**
      * Touch an item, which gives its description, NOT add it to inventory.
-     * @param s The item
+     * @param s The item being touched 
      */
     public void touch(Item s) {
         System.out.println(s.description);
@@ -160,7 +156,7 @@ public class Existence {
 
     /**
      * Let the user take/own an item (add it to inventory)
-     * @param s the item
+     * @param s the item being taken
      */
     public void take(Item s) {
         if (this.inventory.contains(s)) {
@@ -176,8 +172,7 @@ public class Existence {
 
     /**
      * Let the user put down an item at a room (remove it from inventory)
-     * @param s the item
-     * @param r the room
+     * @param s the item being put down
      */
     public void putDown(Item s) {
         if (this.inventory.contains(s) && s.canBeGrabbed == true) {
@@ -208,6 +203,9 @@ public class Existence {
         + this.getHealth() + "\n 'I couldn't win by fighting. I should find a better way to stop him...'");
     }
 
+    /**
+     * Player can run to escape in stage 3
+     */
     public void run() {
         this.weaken();
         System.out.println("You ran and ran, exhausting your strength.\n"  
