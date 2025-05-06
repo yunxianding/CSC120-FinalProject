@@ -10,7 +10,6 @@
 * `crawl to item` to crawl to something;
 * `walk to item` to walk to something;
 * `open item` to open something;
-* ·close item` to close something;
 * `put on item` to put on something; 
 * `put down item` to put down something;
 * `health` to check your curent health status;
