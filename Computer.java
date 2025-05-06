@@ -51,7 +51,7 @@ public class Computer extends Item {
     /** Displays the control panel with current switch states. 
      * @param r The robot whose controls are being toggled
      * @param rm The room where the lasers are
-    */
+     */
     public void openControlPanel(Robot r, Room rm) {
         System.out.println("\n=== Control Panel ===");
         System.out.println("power control button for robot teddy: " + "On/Off"+ " current state: Powered On? " + r.poweredOn);
@@ -61,7 +61,7 @@ public class Computer extends Item {
 
     /** Attempts to toggle power off/on
      * @param r The robot 
-    */
+     */
     public void togglePower(Robot r) {
         if (r.poweredOn == true) {
             r.poweredOn = false;
