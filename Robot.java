@@ -33,10 +33,10 @@ public class Robot extends Existence {
     // Methods
 
     /**
-    * The robot can put on items that are mechanical parts of its body.
-    * Handles putting on both the leg and the eye.
-    * @param item The item to put on (leg or eye).
-    */
+     * The robot can put on items that are mechanical parts of its body.
+     * Handles putting on both the leg and the eye.
+     * @param item The item to put on (leg or eye).
+     */
     public void putOn(Item item) {
         if (this.inventory.contains(item)) {
             if (item.name.equalsIgnoreCase("leg")) {
@@ -55,6 +55,7 @@ public class Robot extends Existence {
 
     /**
      * The robot can electrocute the human and make the human fall unconscious
+     * @param h the human to be electrocuted
      */
     public void electrocute(Human h) {
         h.isUnconscious = true;
