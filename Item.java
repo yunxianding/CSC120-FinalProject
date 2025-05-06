@@ -11,13 +11,13 @@ public class Item {
     public Boolean canBeOpened;
     public Boolean canBePutOn;
 
-    /* Default Constructor 
-    * @param name the item's name
-    * @param description the item's description
-    * @param canBeGrabbed indicator of whether the player can perform `take` method upon the item
-    * @param canBeOpened indicator of whether the player can perform `open` method upon the item
-    * @param canBePutOn indicator of whether the player can perform `putOn` method upon the item
-    */
+    /** Default Constructor 
+     * @param name the item's name
+     * @param description the item's description
+     * @param canBeGrabbed indicator of whether the player can perform `take` method upon the item
+     * @param canBeOpened indicator of whether the player can perform `open` method upon the item
+     * @param canBePutOn indicator of whether the player can perform `putOn` method upon the item
+     */
     public Item(String name, String description, Boolean canBeGrabbed, Boolean canBeOpened, Boolean canBePutOn) {
         this.name = name;
         this.description = description;
