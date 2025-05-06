@@ -46,7 +46,7 @@ public class Room {
 
     /**
      * Remove an item from the items arraylist
-     * @param ietm to be removed
+     * @param item to be removed
      */
     public void removeItem(Item item) {
         if (item != null) {
