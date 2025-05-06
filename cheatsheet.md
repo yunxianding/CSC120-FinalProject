@@ -5,7 +5,7 @@
 * `touch item` to touch an item and see its description;
 * `inventory` to see your inventory; 
 * `look around` to look around;
-* ·location` to see current location;
+* `location` to see current location;
 * `inspect item` to inspect something;
 * `crawl to item` to crawl to something;
 * `walk to item` to walk to something;
