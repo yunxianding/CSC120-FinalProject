@@ -1,6 +1,5 @@
 /**
  * The Item class creates items we will use in the rooms.
- * Each item has a name, description and a status of whether can be grabbed.
  */
 public class Item {
 
@@ -12,7 +11,13 @@ public class Item {
     public Boolean canBeOpened;
     public Boolean canBePutOn;
 
-    /* Default Constructor */
+    /* Default Constructor 
+    * @param name the item's name
+    * @param description the item's description
+    * @param canBeGrabbed indicator of whether the player can perform `take` method upon the item
+    * @param canBeOpened indicator of whether the player can perform `open` method upon the item
+    * @param canBePutOn indicator of whether the player can perform `putOn` method upon the item
+    */
     public Item(String name, String description, Boolean canBeGrabbed, Boolean canBeOpened, Boolean canBePutOn) {
         this.name = name;
         this.description = description;
@@ -32,7 +37,7 @@ public class Item {
 
     /**
      * Accessor for item's status(whether it can be grabbed/opened/put on)
-     * @return the statussof the item
+     * @return the status of the item
      */
     public String getItemStatus() {
         return ("\n Item status for " + this.name +
@@ -51,6 +56,7 @@ public class Item {
 
     /**
      * Method for an item to store another item
+     * @param item the item stored inside
      */
     public void storeItem(Item item){
         if (this.containedItem == null) {
